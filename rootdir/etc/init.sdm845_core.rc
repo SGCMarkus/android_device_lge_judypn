@@ -1,0 +1,155 @@
+# This file is imported by init.{ro.hardware}.rc
+
+# to override this file (device specific .rc)
+import /vendor/etc/init/hw/init.${ro.hardware}_core.rc
+
+# LGE logger service rc
+import /init.lge.log.rc
+
+# LGE FM Radio rc
+import /init.lge.fm.rc
+
+on init
+    export SDCARD_TRAY_PATH /sys/class/mmc_host/mmc0/cd_status
+
+on fs
+    wait /dev/block/platform/soc/1d84000.ufshc
+    symlink /dev/block/platform/soc/1d84000.ufshc /dev/block/bootdevice
+    mount_all /vendor/etc/fstab.${ro.hardware}
+    restorecon_recursive /persist
+    mkdir /persist/data 0700 system system
+
+    # Executing tune2fs to reserve some region in /data.(40MB)
+    exec /system/bin/tune2fs -u system -r 10240 /dev/block/bootdevice/by-name/userdata
+
+on post-fs
+    chown system system /vendor/mpt
+    chmod 0775 /vendor/mpt
+
+    chown system system /vendor/persist-lg
+    chmod 0771 /vendor/persist-lg
+
+    chown system system /vendor/sns
+    chmod 0755 /vendor/sns
+
+    chown system system /vendor/srtc
+    chmod 0755 /vendor/srtc
+
+    chown root root /vendor/power
+    chmod 0755 /vendor/power
+
+    chown system system /vendor/fota
+    chmod 0755 /vendor/fota
+
+    chown system system /vendor/els
+    chmod 0755 /vendor/els
+
+    chown system system /vendor/vzw/quality
+    chmod 0755 /vendor/vzw/quality
+
+    chown system system /vendor/persdata/absolute
+    chmod 0750 /vendor/persdata/absolute
+
+    chown system system /vendor/OP
+    chmod 0755 /vendor/OP
+
+    chown system radio /vendor/eri
+    chmod 0771 /vendor/eri
+
+    chown system system /vendor/carrier
+    chmod 0771 /vendor/carrier
+
+    start sreadahead
+
+on post-fs-data
+    mkdir /data/ramoops 0750 root log
+
+on property:persist.sys.emmc_size=32G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 32
+
+on property:persist.sys.emmc_size=64G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 64
+
+on property:persist.sys.emmc_size=128G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 128
+
+on property:persist.sys.emmc_size=256G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 256
+
+on property:persist.sys.emmc_size=512G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 512
+
+service set_emmc_size /vendor/bin/set_emmc_size.sh
+    class late_start
+    user root
+    group media_rw system sdcard_rw
+    oneshot
+
+# LGE ramoops backup function service
+service ramoops_backup /vendor/bin/ramoops_backup.sh
+    class main
+    disabled
+    oneshot
+
+# LGE time_in_stae function service
+service time_in_state /vendor/bin/init.time_in_state.sh
+    class main
+    disabled
+    oneshot
+
+# LGE pstore backup function service
+service pstore_backup /vendor/bin/pstore_backup.sh
+    class main
+    disabled
+    oneshot
+
+# enable & disable crash handler, rtb & trace event through property
+on property:persist.service.crash.enable=*
+    restart service-crash
+
+service service-crash /vendor/bin/init.sdm845.crash.sh
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=stopped
+    start time_in_state
+    start ramoops_backup
+    start pstore_backup
+
+#LGE_CHANGE_S, Advanced MOCA, huny.lee@lge.com
+service moca_service /system/bin/advanced_moca -s
+    class late_start
+    user root
+    group system sdcard_r sdcard_rw radio
+    disabled
+    oneshot
+    socket Full.MOCA.port stream 660 system system
+
+
+service sreadahead /vendor/bin/treadahead
+    oneshot
+    disabled
+    seclabel u:r:sreadahead:s0
+
+# make a diecision whether sreadahead would be performed or not.
+service sreadahead-check /vendor/bin/sreadahead_check
+    class main
+    user root
+    group root
+    oneshot
+    seclabel u:r:sreadahead-check:s0
+
+on property:persist.service.moca.enable=1
+    start moca_service
+
+on property:persist.service.moca.enable=0
+    stop moca_service
+#LGE_CHANGE_E, Advanced MOCA, huny.lee@lge.com
+
+on property:persist.service.crash.enable=1
+	start console

@@ -24,6 +24,10 @@ DEVICE_PATH := device/lge/judypn
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
+# HIDL
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
+
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.hardware=judypn
 #TARGET_KERNEL_CONFIG := lineageos_judypn_defconfig
@@ -33,6 +37,7 @@ TARGET_KERNEL_SOURCE := kernel/lge/judypn
 # Partitions
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 113775689728
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 
 BOARD_ROOT_EXTRA_FOLDERS := oem vzw firmware persist ftm persdata
 BOARD_ROOT_EXTRA_SYMLINKS := \
@@ -42,9 +47,6 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.judypn
-
-# Treble
-BOARD_VNDK_VERSION := current
 
 # inherit from the proprietary version
 -include vendor/lge/judypn/BoardConfigVendor.mk

@@ -1,0 +1,20 @@
+# This file will be installed as /init.{ro.hardware}.rc
+import /vendor/etc/init/hw/init.qcom.rc
+
+# LGE Bluetooth rc
+import /vendor/etc/init/hw/init.lge.bt.rc
+
+# to override init.qcom.rc and init.target.rc
+# USB
+import /vendor/etc/init/hw/init.lge.usb.rc
+import /vendor/etc/init/hw/init.lge.usb.configfs.rc
+
+# Filesystem
+import /init.lge.fs.rc
+
+# Power
+import /vendor/etc/init/init.lge.power.rc
+
+import /vendor/etc/init/hw/init.sdm845_core.rc
+
+import /vendor/etc/init/init.lge.sensors.rc

@@ -1,0 +1,78 @@
+# judypn_product init rc
+
+# For Kinibi(t-base), lge-secureboot@lge.com
+import /vendor/etc/init/init.kinibi.rc
+
+on post-fs-data
+    # NFC: create data/nfc for nv storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+    mkdir /data/vendor/nfc 0770 nfc nfc
+
+# LGE_CHANGE_S LGT_REQ [BEGIN]
+    mkdir /data/data/com.ubivelox.wipiplayer/W 0777 system oem_5501
+    mkdir /data/LGTContents 0771 system oem_5501
+    mkdir /data/LGTContents/app 0771 system oem_5501
+    mkdir /data/LGTContents/video 0771 system oem_5501
+    mkdir /data/LGTContents/music 0771 system oem_5501
+    mkdir /data/LGTContents/bell 0771 system oem_5501
+    mkdir /data/LGTContents/DLtmp 0771 system oem_5501
+    mkdir /data/LGTContents/ringforme 0771 system oem_5501
+
+# add LGTConents
+    chown system oem_5501 /data/data/com.ubivelox.wipiplayer/W
+    chown system oem_5501 /data/LGTContents
+    chown system oem_5501 /data/LGTContents/video
+    chown system oem_5501 /data/LGTContents/music
+    chown system oem_5501 /data/LGTContents/bell
+    chown system oem_5501 /data/LGTContents/app
+    chown system oem_5501 /data/LGTContents/DLtmp
+    chown system oem_5501 /data/LGTContents/ringforme
+    restorecon_recursive /data/LGTContents
+# LGE_CHANGE_E LGT_REQ [END]
+
+# LGU+ CNAS
+on init
+# Storage views to support runtime permissions
+    mkdir /mnt/runtime/default/cnas 0755 root root
+    mkdir /mnt/runtime/read/cnas 0755 root root
+    mkdir /mnt/runtime/write/cnas 0755 root root
+
+    symlink /storage/self/cnas    /mnt/media_rw/cnas
+
+on post-fs-data
+    mkdir /data/cnas 0775 oem_2907 oem_2907
+    mkdir /data/cnas-cfg 0775 oem_2907 oem_2907
+    mkdir /data/cnas-cfg/obb 0775 oem_2907 oem_2907
+    mkdir /data/cnas-cfg/photo_thumb 0775 oem_2907 oem_2907
+    mkdir /data/cnas-cfg/video_thumb 0775 oem_2907 oem_2907
+
+    setprop vold.watch_cnas_fuseops_unique 0
+
+
+# LGE IMS ipsec solution [START]
+service ipsecclient /system/bin/ipsecclient
+    class main
+    group system net_admin net_raw
+    disabled
+
+service ipsecstarter /system/bin/ipsecstarter
+    class main
+    user system
+    group system net_admin net_raw
+# LGE IMS ipsec solution [END]
+
+# LGE IMS Features - To interwork with QMI WMS (64-bit exe/lib)
+service imswmsproxy /system/bin/imswmsproxy
+    class main
+    user system
+    group radio system net_admin net_raw
+# LGE IMS Features with QMI WMS (64-bit exe/lib)[END]
+
+# Add ipd service
+service ipd /vendor/bin/ipd
+    class main
+    user root
+    group radio
+
+import /vendor/etc/init/motor_lib.rc

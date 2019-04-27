@@ -1,0 +1,202 @@
+# Copyright (c) 2009-2012, Code Aurora Forum. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of Code Aurora nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+import /vendor/etc/init/hw/init.judypn_product.rc
+import /init.lge.svelte.rc
+
+# LGODL
+import /init.lge.modem_log.rc
+
+# Start Wi-Fi Service
+import /vendor/etc/init/init.wifi.rc
+import /vendor/etc/init/init.wifi_ext.rc
+
+# Power
+import /vendor/etc/init/vendor.lge.power.rc
+
+on post-fs
+# Support tuxera exfat filesystem
+    insmod /vendor/lib/modules/texfat.ko
+
+#For LGKM default key storage
+    mkdir /vendor/persist-lg/kmstore 0770 system system
+
+on post-fs-data
+# change preload directory permission for movetosd about preload app
+    start chmod_dp
+
+# change preload directory permission for movetosd about preload app
+service chmod_dp /vendor/bin/change_permission_preload.sh
+    disable
+    oneshot
+
+on boot
+
+# Begin Display General Features
+	chown system system /sys/class/panel/freeze_state_hal
+	chmod 664 /sys/class/panel/freeze_state_hal
+# End Display General Features
+
+# Begin Display Brigntness Features
+	chown system system /sys/class/backlight/panel0-backlight/brightness
+	chmod 664 /sys/class/backlight/panel0-backlight/brightness
+	chown system system /sys/class/backlight/panel0-backlight/max_brightness
+	chmod 664 /sys/class/backlight/panel0-backlight/max_brightness
+	chown system system /sys/class/backlight/panel0-backlight-ex/brightness
+	chmod 664 /sys/class/backlight/panel0-backlight-ex/brightness
+	chown system system /sys/class/backlight/panel0-backlight-ex/max_brightness
+	chmod 664 /sys/class/backlight/panel0-backlight-ex/max_brightness
+	chown system system /sys/class/panel/brightness/hl_mode
+	chmod 664 /sys/class/panel/brightness/hl_mode
+	chown system system /sys/class/panel/brightness/irc_brighter
+	chmod 664 /sys/class/panel/brightness/irc_brighter
+	chown system system /sys/class/panel/brightness/irc_support
+	chmod 444 /sys/class/panel/brightness/irc_support
+# End Display Brigntness Features
+
+# Begin Display Aod Features
+	chown system system /sys/class/panel/aod/area
+	chmod 664 /sys/class/panel/aod/area
+	chown system system /sys/class/panel/aod/power_mode
+	chmod 664 /sys/class/panel/aod/power_mode
+# End Display Aod Features
+
+# Begin Img Tune Features
+	chown system system /sys/class/panel/img_tune/rgb_tune
+	chmod 664 /sys/class/panel/img_tune/rgb_tune
+	chown system system /sys/class/panel/img_tune/screen_tune
+	chmod 664 /sys/class/panel/img_tune/screen_tune
+	chown system system /sys/class/panel/img_tune/screen_mode
+	chmod 664 /sys/class/panel/img_tune/screen_mode
+	chown system system /sys/class/panel/img_tune/comfort_view
+	chmod 664 /sys/class/panel/img_tune/comfort_view
+	chown system system /sys/class/panel/img_tune/video_enhancement
+	chmod 664 /sys/class/panel/img_tune/video_enhancement
+	chown system system /sys/class/panel/img_tune/vr_low_persist
+	chmod 664 /sys/class/panel/img_tune/vr_low_persist
+	chown system system /sys/class/panel/img_tune/hdr_mode
+	chmod 664 /sys/class/panel/img_tune/hdr_mode
+	chown system system /sys/class/panel/img_tune/sharpness
+	chmod 664 /sys/class/panel/img_tune/sharpness
+# End Img Tune Features
+
+# START touch_driver
+	chown system system /sys/devices/virtual/input/lge_touch/incoming_call
+	chmod 664 /sys/devices/virtual/input/lge_touch/incoming_call
+	chown system system /sys/devices/virtual/input/lge_touch/ime_status
+	chown system system /sys/devices/virtual/input/lge_touch/keyguard
+	chmod 664 /sys/devices/virtual/input/lge_touch/keyguard
+	chown system system /sys/devices/virtual/input/lge_touch/debug_tool
+	chmod 664 /sys/devices/virtual/input/lge_touch/debug_tool
+	chown system system /sys/devices/virtual/input/lge_touch/debug_option
+	chmod 664 /sys/devices/virtual/input/lge_touch/debug_option
+	chown system system /sys/devices/virtual/input/lge_touch/onhand
+	chmod 664 /sys/devices/virtual/input/lge_touch/onhand
+	chown system system /sys/devices/virtual/input/lge_touch/vr_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/vr_status
+	chown system system /sys/devices/virtual/input/lge_touch/autotune
+	chmod 664 /sys/devices/virtual/input/lge_touch/autotune
+	chown system system /sys/devices/virtual/input/lge_touch/grip_suppression
+	chmod 664 /sys/devices/virtual/input/lge_touch/grip_suppression
+	chown system system /sys/devices/virtual/input/lge_touch/app_data
+	chmod 664 /sys/devices/virtual/input/lge_touch/app_data
+# END touch_driver
+
+# MME diver
+	chown system system  /sys/class/lge_mme_bus/mme_bus_ctrl/boost
+	chmod 664  /sys/class/lge_mme_bus/mme_bus_ctrl/boost
+# END MME diver
+
+# START touch_knock_on
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chown system system /sys/devices/virtual/input/lge_touch/quick_cover_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/quick_cover_status
+	chown system system /sys/devices/virtual/input/lge_touch/q_sensitivity
+	chmod 664 /sys/devices/virtual/input/lge_touch/q_sensitivity
+	chown system system /sys/devices/virtual/input/lge_touch/swipe_enable
+	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_enable
+	chown system system /sys/devices/virtual/input/lge_touch/swipe_tool
+	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_tool
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_abs
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_abs
+# END touch_knock_on
+
+# Start secure_touch
+	chown system system /sys/devices/virtual/input/lge_touch/secure_touch
+	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch
+	chown system system /sys/devices/virtual/input/lge_touch/secure_touch_enable
+	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch_enable
+	chown system system /sys/devices/virtual/input/lge_touch/secure_touch_devinfo
+	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch_devinfo
+	chown system system /sys/bus/platform/devices/a98000.i2c/power/control
+	chmod 664 /sys/bus/platform/devices/a98000.i2c/power/control
+# End secure_touch
+
+# Touch / Boosting settings, add vr_status property
+on property:vrcore.mode.on=false
+	write /sys/devices/virtual/input/lge_touch/vr_status 0
+	write /sys/module/cpu_boost/parameters/input_boost_freq "0:1766400 4:902400"
+
+on property:vrcore.mode.on=true
+	write /sys/module/cpu_boost/parameters/input_boost_freq 0
+	write /sys/devices/virtual/input/lge_touch/vr_status 1
+
+on init
+    setprop ro.ssbd.session /dev/block/bootdevice/by-name/eksst
+
+# Begin Immersion Changes
+service immvibed /vendor/bin/immvibed -p 99 -u 1000
+    class late_start
+    user root
+    group root
+    ioprio rt 4
+
+on late-init
+    setprop ro.support.waterproof true
+
+# Copy DP preload contents start
+on property:sys.factory.cppreloads=1 && property:ro.cp_system_other_preload=1 && property:persist.lge.copied_dp_preload_contents=0 && property:ro.boot.slot_suffix=_a
+    mount ext4 /dev/block/bootdevice/by-name/system_b /postinstall ro nosuid nodev noexec
+    exec - root -- /system/bin/cppreloads.sh /postinstall
+    umount /postinstall
+    setprop sys.factory.cppreloads 0
+    setprop persist.lge.copied_dp_preload_contents 1
+
+on property:sys.factory.cppreloads=1 && property:ro.cp_system_other_preload=1 && property:persist.lge.copied_dp_preload_contents=0 && property:ro.boot.slot_suffix=_b
+    mount ext4 /dev/block/bootdevice/by-name/system_a /postinstall ro nosuid nodev noexec
+    exec - root -- /system/bin/cppreloads.sh /postinstall
+    umount /postinstall
+    setprop sys.factory.cppreloads 0
+    setprop persist.lge.copied_dp_preload_contents 1
+# Copy DP preload contents end
+
+on early-fs
+    ffu_update
+
