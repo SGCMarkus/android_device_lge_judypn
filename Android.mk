@@ -30,6 +30,81 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
 
+# A/B builds require us to create the mount points at compile time.
+# Just creating it for all cases since it does not hurt.
+ELS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/els
+$(ELS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(ELS_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/els
+
+SNS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/sns
+$(SNS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(SNS_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/sns
+
+DSP_MOUNT_POINT := $(TARGET_OUT_VENDOR)/dsp
+$(DSP_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(DSP_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/dsp
+
+DRM_MOUNT_POINT := $(TARGET_OUT_VENDOR)/persist-lg
+$(DRM_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(DRM_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/persist-lg
+
+MPT_MOUNT_POINT := $(TARGET_OUT_VENDOR)/mpt
+$(MPT_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(MPT_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/mpt
+
+SRTC_MOUNT_POINT := $(TARGET_OUT_VENDOR)/srtc
+$(SRTC_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(SRTC_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/srtc
+
+POWER_MOUNT_POINT := $(TARGET_OUT_VENDOR)/power
+$(POWER_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(POWER_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/power
+
+VZW_MOUNT_POINT := $(TARGET_OUT_VENDOR)/vzw/quality
+$(VZW_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(VZW_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/vzw/quality
+
+ERI_MOUNT_POINT := $(TARGET_OUT_VENDOR)/eri
+$(ERI_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(ERI_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/eri
+
+CARRIER_MOUNT_POINT := $(TARGET_OUT_VENDOR)/carrier
+$(CARRIER_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(CARRIER_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/carrier
+
+PERSDATA_MOUNT_POINT := $(TARGET_OUT_VENDOR)/persdata/absolute
+$(PERSDATA_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(PERSDATA_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/persdata/absolute
+
+ALL_DEFAULT_INSTALLED_MODULES += $(ELS_MOUNT_POINT) $(SNS_MOUNT_POINT) $(DSP_MOUNT_POINT) \
+    $(DRM_MOUNT_POINT) $(MPT_MOUNT_POINT) $(SRTC_MOUNT_POINT) $(POWER_MOUNT_POINT) $(VZW_MOUNT_POINT) \
+    $(ERI_MOUNT_POINT) $(CARRIER_MOUNT_POINT) $(PERSDATA_MOUNT_POINT)
+# END A/B Vendor mounts
+
+# libsymphony
+SYMPHONY_LIBS := libsymphonypower.so libsymphony-cpu.so
+SYMPHONY_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib/,$(notdir $(SYMPHONY_LIBS)))
+$(SYMPHONY_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Symphony lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /vendor/lib/libsymphony-1.1.4.so $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(SYMPHONY_SYMLINKS)
+
+# END libsymphony
+
 # RFS MSM
 RFS_MSM_ADSP_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/msm/adsp/
 $(RFS_MSM_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)

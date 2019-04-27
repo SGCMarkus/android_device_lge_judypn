@@ -23,6 +23,7 @@ vendor/lib/libarcsoft_dualcam_verification_front.so
 vendor/lib/libarcsoft_makeup.so
 vendor/lib/libarcsoft_picselfie_algorithm.so
 vendor/lib/libbwfocuspeaking.so
+vendor/lib/libcamxstatscore.so
 vendor/lib/libcinemaeffect.so
 vendor/lib/libfilm_emulation.so
 vendor/lib/libfilm_emulation_symphony.so
@@ -34,10 +35,18 @@ vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmorpho_image_stab31.so
 vendor/lib/libmorpho_superzoom.so
 vendor/lib/libmpbase.so
+vendor/lib/libsymphony-1.1.4.so
+vendor/lib/libsymphonypower-1.1.4.so
+vendor/lib/libCmcPdaf.so
+vendor/lib/libCmcPdaf_tele.so
+vendor/lib/libcalibverify.so
+vendor/lib/libcalibverifyW_T.so
 vendor/lib64/liblgdnn.so
 vendor/lib64/liblgmbms.so
 vendor/lib64/libmmcamera_faceproc.so
 vendor/lib64/libmmcamera_faceproc2.so
+vendor/lib64/libsymphonypower-1.1.4.so
+vendor/lib64/libsymphony-1.1.4.so
 
 # Camera - Automatic white-balance and exposure
 vendor/lib/camera/fdconfigpreview.bin
@@ -148,6 +157,16 @@ vendor/lib/camera/liblg_awb_param_s5k3m5t_zsl.so
 vendor/lib/camera/titan17x_usecases.bin
 vendor/lib/liblgae_main.so
 vendor/lib/liblgawb_main.so
+vendor/lib/libcom.qti.chinodeutils.so
+vendor/lib/lib.com.lge.elvis.so
+vendor/lib/libSRIyuv.so
+vendor/lib/libcamxfdengine.so
+vendor/lib/libcamxfdalgov7.so
+vendor/lib/libgnustl_shared.so
+vendor/lib/lib_wdr2.so
+vendor/lib/liblgsnpeawb.so
+vendor/lib/libSNPE.so
+vendor/lib/libdeepportrait.so
 vendor/lib64/liblgae_main.so
 vendor/lib64/liblgawb_main.so
 
@@ -293,8 +312,11 @@ vendor/bin/xtra-daemon
 vendor/etc/gps.conf
 vendor/etc/init/vendor.qti.gnss@1.1-service.rc
 vendor/lib/hw/vendor.qti.gnss@1.1-impl.so
+vendor/lib/libgnsspps.so
 vendor/lib/liblocation_api.so
 vendor/lib/libloc_core.so
+vendor/lib/libloc_pla.so
+vendor/lib/libloc_stub.so
 vendor/lib/libdiagjni.so
 vendor/lib/libevent_observer.so
 vendor/lib/libgps.utils.so
@@ -306,8 +328,11 @@ vendor/lib64/libloc_ds_api.so
 vendor/lib64/libdataitems.so
 vendor/lib64/libdrplugin_client.so
 vendor/lib64/libDRPlugin.so
+vendor/lib64/libgnsspps.so
 vendor/lib64/liblocation_api.so
 vendor/lib64/libloc_core.so
+vendor/lib64/libloc_pla.so
+vendor/lib64/libloc_stub.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libevent_observer.so
 vendor/lib64/libgps.utils.so
@@ -320,6 +345,7 @@ vendor/lib64/libloc_externalDr.so
 vendor/lib64/liblocationservice_glue.so
 vendor/lib64/liblocationservice.so
 vendor/lib64/liblowi_client.so
+vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libslimclient.so
 vendor/lib64/libulp2.so
 vendor/lib64/libxtadapter.so
