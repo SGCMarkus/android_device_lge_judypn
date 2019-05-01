@@ -35,8 +35,6 @@ vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmorpho_image_stab31.so
 vendor/lib/libmorpho_superzoom.so
 vendor/lib/libmpbase.so
-vendor/lib/libsymphony-1.1.4.so
-vendor/lib/libsymphonypower-1.1.4.so
 vendor/lib/libCmcPdaf.so
 vendor/lib/libCmcPdaf_tele.so
 vendor/lib/libcalibverify.so
@@ -45,8 +43,6 @@ vendor/lib64/liblgdnn.so
 vendor/lib64/liblgmbms.so
 vendor/lib64/libmmcamera_faceproc.so
 vendor/lib64/libmmcamera_faceproc2.so
-vendor/lib64/libsymphonypower-1.1.4.so
-vendor/lib64/libsymphony-1.1.4.so
 
 # Camera - Automatic white-balance and exposure
 vendor/lib/camera/fdconfigpreview.bin
@@ -253,6 +249,72 @@ vendor/lib64/camera/com.qti.tuned.sl846.bin
 vendor/lib64/camera/com.qti.tuned.sl846_global.bin
 vendor/lib64/camera/com.qti.tuned.sl846_tmus.bin
 
+# Configstore
+vendor/bin/hw/vendor.lge.hardware.configstore@1.0-service
+vendor/etc/init/vendor.lge.hardware.configstore@1.0-service.rc
+vendor/lib64/vendor.lge.hardware.configstore@1.0_vendor.so
+vendor/lib/vendor.lge.hardware.configstore@1.0_vendor.so
+
+# Contexthub
+#vendor/bin/hw/android.hardware.contexthub@1.0-service
+#vendor/etc/init/android.hardware.contexthub@1.0-service.rc
+#vendor/lib64/hw/android.hardware.contexthub@1.0-impl.generic.so
+#vendor/lib/hw/android.hardware.contexthub@1.0-impl.generic.so
+
+
+# DSP
+#vendor/bin/chre
+vendor/lib/libsymphony-1.1.4.so
+vendor/lib/libsymphonypower-1.1.4.so
+vendor/lib/rfsa/adsp/activity.so
+vendor/lib/rfsa/adsp/AlacDecoderModule.so.1
+vendor/lib/rfsa/adsp/ApeDecoderModule.so.1
+vendor/lib/rfsa/adsp/AudioContextDetection.so.1
+vendor/lib/rfsa/adsp/AudioSphereModule.so.1
+vendor/lib/rfsa/adsp/cellinfo_tools.so
+vendor/lib/rfsa/adsp/CFCMModule.so.1
+vendor/lib/rfsa/adsp/chre_drv_bt.so
+vendor/lib/rfsa/adsp/chre_drv_gf.so
+vendor/lib/rfsa/adsp/chre_drv_loc.so
+vendor/lib/rfsa/adsp/chre_drv_modem.so
+vendor/lib/rfsa/adsp/chre_drv_wifi.so
+vendor/lib/rfsa/adsp/chre_pal.so
+vendor/lib/rfsa/adsp/EtsiAmrWbPlusDecModule.so.1
+vendor/lib/rfsa/adsp/EtsiEaacPlusEncAndCmnModule.so.1
+vendor/lib/rfsa/adsp/fastrpc_shell_0
+vendor/lib/rfsa/adsp/FlacDecoderModule.so.1
+vendor/lib/rfsa/adsp/fluence_voiceplus_module.so.1
+vendor/lib/rfsa/adsp/HeaacDecoderModule.so.1
+vendor/lib/rfsa/adsp/LdacModule.so.1
+vendor/lib/rfsa/adsp/libapps_mem_heap.so
+vendor/lib/rfsa/adsp/libarcsoft_dualcam_refocus_skel.so
+vendor/lib/rfsa/adsp/libchre_slpi_skel.so
+vendor/lib/rfsa/adsp/libdspCV_skel.so
+vendor/lib/rfsa/adsp/libexternal_dog_skel.so
+vendor/lib/rfsa/adsp/libfastcvadsp.so
+vendor/lib/rfsa/adsp/libfastcvdsp_skel.so
+vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_skel.so
+vendor/lib/rfsa/adsp/libhexagon_nn_skel.so
+vendor/lib/rfsa/adsp/libhvxMathVIO.so
+vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
+vendor/lib/rfsa/adsp/libscveT2T_skel.so
+vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so
+vendor/lib/rfsa/adsp/libstabilitydomain_skel.so
+vendor/lib/rfsa/adsp/libsysmondomain_skel.so
+vendor/lib/rfsa/adsp/libsysmon_skel.so
+vendor/lib/rfsa/adsp/libVC1DecDsp_skel.so
+vendor/lib/rfsa/adsp/libVC1Dec.so
+vendor/lib/rfsa/adsp/lowi_client.so
+vendor/lib/rfsa/adsp/mmecns_module.so.1
+vendor/lib/rfsa/adsp/SAPlusCmnModule.so.1
+vendor/lib/rfsa/adsp/SVACmnModule.so.1
+vendor/lib/rfsa/adsp/VoiceWakeup_V2_Module.so.1
+vendor/lib/rfsa/adsp/VorbisDecoderModule.so.1
+vendor/lib/rfsa/adsp/WmaProDecoderModule.so.1
+vendor/lib/rfsa/adsp/WmaStdDecoderModule.so.1
+vendor/lib64/libsymphonypower-1.1.4.so
+vendor/lib64/libsymphony-1.1.4.so
+
 # Firmware (Audio)
 vendor/firmware/Tfa9872.cnt
 vendor/firmware/Tfa9872_ras.cnt
@@ -300,6 +362,12 @@ vendor/firmware/leia_pm4_470.fw
 # Firmware (NFC)
 vendor/firmware/libpn553_fw_64.so:vendor/lib64/libpn553_fw_64.so
 vendor/firmware/libpn553_fw.so:vendor/lib/libpn553_fw.so
+
+# Gatekeeper
+vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
+vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
+vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
+vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 
 # GPS
 vendor/lib/libpcas_vendor.so
@@ -357,6 +425,18 @@ vendor/lib64/vendor.qti.gnss@1.1_vendor.so
 -priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
 -priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
 
+# Keystore
+vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
+vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc
+vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so
+vendor/lib64/libkeymasterdeviceutils.so
+vendor/lib64/libkeymasterprovision.so
+vendor/lib64/libkeymasterutils.so
+vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so
+vendor/lib/libkeymasterdeviceutils.so
+vendor/lib/libkeymasterprovision.so
+vendor/lib/libkeymasterutils.so
+
 # QDCM calibration data
 vendor/etc/qdcm_calib_data_SW43406_cmd_mode_dsc_dsi_panel.xml
 vendor/etc/qdcm_calib_data_SW43408A_cmd_mode_dsc_dsi_panel.xml
@@ -370,7 +450,9 @@ vendor/lib/libscveFaceRecognition.so
 # Sensors
 vendor/bin/sensors.qcom
 vendor/lib64/sensors.ssc.so
+vendor/lib64/sensors.sar.so
 vendor/lib/sensors.ssc.so
+vendor/lib/sensors.sar.so
 
 # Sensors configs
 vendor/etc/sensors/hals.conf

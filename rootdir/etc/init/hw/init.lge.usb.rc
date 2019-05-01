@@ -82,13 +82,13 @@ on property:sys.usb.typec.control=on
 on property:persist.sys.usb.typec.mode=fault
     write /sys/class/dual_role_usb/otg_default/control on
     write /sys/class/dual_role_usb/otg_default/mode fault
-    write /vendor/persist-lg/chargerlogo/moisture_detection 1
+    write /mnt/vendor/persist-lg/chargerlogo/moisture_detection 1
     setprop sys.usb.typec.state ${persist.sys.usb.typec.mode}
 
 on property:persist.sys.usb.typec.mode=none
     write /sys/class/dual_role_usb/otg_default/mode none
     write /sys/class/dual_role_usb/otg_default/control auto
-    rm /vendor/persist-lg/chargerlogo/moisture_detection
+    rm /mnt/vendor/persist-lg/chargerlogo/moisture_detection
     rm /data/property/persist.sys.usb.typec.mode
     setprop sys.usb.typec.state ${persist.sys.usb.typec.mode}
 

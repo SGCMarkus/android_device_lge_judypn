@@ -2,20 +2,22 @@
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>4.0</version>
         <interface>
             <name>IDevicesFactory</name>
             <instance>default</instance>
         </interface>
+        <fqname>@4.0::IDevicesFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>4.0</version>
         <interface>
             <name>IEffectsFactory</name>
             <instance>default</instance>
         </interface>
+        <fqname>@4.0::IEffectsFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.biometrics.fingerprint</name>
@@ -52,6 +54,7 @@
             <name>ICameraProvider</name>
             <instance>legacy/0</instance>
         </interface>
+        <fqname>@2.4::ICameraProvider/legacy/0</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.cas</name>
@@ -143,7 +146,7 @@
     <hal format="hidl">
         <name>android.hardware.health</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>2.0</version>
         <interface>
             <name>IHealth</name>
             <instance>default</instance>
@@ -262,7 +265,7 @@
     <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>2.1</version>
         <interface>
             <name>ISoundTriggerHw</name>
             <instance>default</instance>
@@ -367,7 +370,7 @@
             <instance>dpmQmiService</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>com.qualcomm.qti.imscmservice</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -375,7 +378,7 @@
             <name>IImsCmService</name>
             <instance>qti.ims.connectionmanagerservice</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>com.qualcomm.qti.uceservice</name>
         <transport>hwbinder</transport>
@@ -452,7 +455,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.accessory</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -505,7 +508,7 @@
             <name>IBattery</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>vendor.lge.hardware.biometrics.fingerprint</name>
         <transport>hwbinder</transport>
@@ -515,7 +518,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.charger</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -523,7 +526,7 @@
             <name>ICharger</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>vendor.lge.hardware.configstore</name>
         <transport>hwbinder</transport>
@@ -541,7 +544,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.data</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -603,7 +606,7 @@
             <name>IFtmitem</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>vendor.lge.hardware.gnss</name>
         <transport>hwbinder</transport>
@@ -613,7 +616,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.lgatcmd</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -640,8 +643,8 @@
             <name>ILgmd</name>
             <instance>default</instance>
         </interface>
-    </hal>
-    <hal format="hidl">
+    </hal>-->
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.light</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -649,8 +652,8 @@
             <name>ILightEx</name>
             <instance>default</instance>
         </interface>
-    </hal>
-    <hal format="hidl">
+    </hal>-->
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.lpwg</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -730,7 +733,7 @@
             <name>IResControl</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>vendor.lge.hardware.radio</name>
         <transport>hwbinder</transport>
@@ -747,7 +750,7 @@
             <instance>lge_radio_prop</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.sdcardtray</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -755,7 +758,7 @@
             <name>ISDCardTray</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>vendor.lge.hardware.securefuse</name>
         <transport>hwbinder</transport>
@@ -765,7 +768,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.sensors</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -818,8 +821,8 @@
             <name>ITouch</name>
             <instance>default</instance>
         </interface>
-    </hal>
-    <hal format="hidl">
+    </hal>-->
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.usb</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -836,7 +839,7 @@
             <name>IUsbUEvent</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>vendor.lge.hardware.vibrator</name>
         <transport>hwbinder</transport>
@@ -846,7 +849,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.vss_ims</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -887,7 +890,7 @@
             <name>ISupplicantStaExNetwork</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>vendor.qti.esepowermanager</name>
         <transport>hwbinder</transport>

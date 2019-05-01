@@ -30,8 +30,8 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.hardware=judypn
-#TARGET_KERNEL_CONFIG := lineageos_judypn_defconfig
-TARGET_KERNEL_CONFIG := judypn_lao_com-perf_defconfig
+TARGET_KERNEL_CONFIG := lineageos_judypn_defconfig
+#TARGET_KERNEL_CONFIG := judypn_lao_com-perf_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/judypn
 
 # Partitions
@@ -39,11 +39,23 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 113775689728
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 
-BOARD_ROOT_EXTRA_FOLDERS := oem vzw firmware persist ftm persdata
+#BOARD_ROOT_EXTRA_FOLDERS := oem ftm # firmware persdata persist vzw 
+#BOARD_ROOT_EXTRA_SYMLINKS := \
+#    /mnt/vendor/persist:/persist \
+#    /mnt/product/carrier:/carrier \
+#    /vendor/dps:/dsp \
+#    /mnt/vendor/eri:/eri \
+#    /mnt/vendor/absolute:/persdata \
+#    /vendor/firmware_mnt:/firmware
+
+BOARD_ROOT_EXTRA_FOLDERS := oem firmware persist persdata vzw ftm
 BOARD_ROOT_EXTRA_SYMLINKS := \
+    /vendor/carrier:/carrier \
     /vendor/dps:/dsp \
-    /vendor/eri:/eri \
-    /vendor/persdata/absolute:/persdata
+    /vendor/eri:/eri
+
+
+#    /mnt/vendor/sns:/vendor/sns \
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.judypn

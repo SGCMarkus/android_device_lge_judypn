@@ -32,6 +32,11 @@ include $(CLEAR_VARS)
 
 # A/B builds require us to create the mount points at compile time.
 # Just creating it for all cases since it does not hurt.
+FIRMWARE_MOUNT_POINT := $(TARGET_OUT_VENDOR)/firmware_mnt
+$(FIRMWARE_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(FIRMWARE_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/firmware_mnt
+
 ELS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/els
 $(ELS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating $(ELS_MOUNT_POINT)"
@@ -89,8 +94,64 @@ $(PERSDATA_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(ELS_MOUNT_POINT) $(SNS_MOUNT_POINT) $(DSP_MOUNT_POINT) \
     $(DRM_MOUNT_POINT) $(MPT_MOUNT_POINT) $(SRTC_MOUNT_POINT) $(POWER_MOUNT_POINT) $(VZW_MOUNT_POINT) \
-    $(ERI_MOUNT_POINT) $(CARRIER_MOUNT_POINT) $(PERSDATA_MOUNT_POINT)
+    $(ERI_MOUNT_POINT) $(CARRIER_MOUNT_POINT) $(PERSDATA_MOUNT_POINT) $(FIRMWARE_MOUNT_POINT)
+#ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) $(DSP_MOUNT_POINT)
 # END A/B Vendor mounts
+
+# Symlinks
+#ELS_SYMLINKS := $(TARGET_OUT_VENDOR)/els
+#$(ELS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+#	@echo "MPT link: $@"
+#	@mkdir -p $(dir $@)
+#	@rm -rf $@
+#	$(hide) ln -sf /mnt/product/els $@
+
+#MPT_SYMLINKS := $(TARGET_OUT_VENDOR)/mpt
+#$(MPT_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+#	@echo "MPT link: $@"
+#	@mkdir -p $(dir $@)
+#	@rm -rf $@
+#	$(hide) ln -sf /mnt/vendor/mpt $@
+
+#SNS_SYMLINKS := $(TARGET_OUT_VENDOR)/sns
+#$(SNS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+#	@echo "SNS link: $@"
+#	@mkdir -p $(dir $@)
+#	@rm -rf $@
+#	$(hide) ln -sf /mnt/vendor/sns $@
+
+#SRTC_SYMLINKS := $(TARGET_OUT_VENDOR)/srtc
+#$(SRTC_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+#	@echo "SRTC link: $@"
+#	@mkdir -p $(dir $@)
+#	@rm -rf $@
+#	$(hide) ln -sf /mnt/product/srtc $@
+
+#PERSIST_LG_SYMLINKS := $(TARGET_OUT_VENDOR)/persist-lg
+#$(PERSIST_LG_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Persist-LG link: $@"
+#	@mkdir -p $(dir $@)
+#	@rm -rf $@
+#	$(hide) ln -sf /mnt/vendor/persist-lg $@
+
+#POWER_SYMLINKS := $(TARGET_OUT_VENDOR)/power
+#$(POWER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Power link: $@"
+#	@mkdir -p $(dir $@)
+#	@rm -rf $@
+#	$(hide) ln -sf /mnt/vendor/power $@
+
+#ABSOLUTE_SYMLINKS := $(TARGET_OUT_VENDOR)/persdata/absolute
+#$(ABSOLUTE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Absolute link: $@"
+#	@mkdir -p $(dir $@)
+#	@rm -rf $@
+#	$(hide) ln -sf /mnt/vendor/absolute $@
+
+#ALL_DEFAULT_INSTALLED_MODULES += $(SNS_SYMLINKS) $(PERSIST_LG_SYMLINKS) $(ELS_SYMLINKS) \
+#    $(MPT_SYMLINKS) $(SRTC_SYMLINKS) $(ABSOLUTE_SYMLINKS) $(POWER_SYMLINKS)
+
+# END Symlinks
 
 # libsymphony
 SYMPHONY_LIBS := libsymphonypower.so libsymphony-cpu.so
@@ -106,6 +167,66 @@ ALL_DEFAULT_INSTALLED_MODULES += $(SYMPHONY_SYMLINKS)
 # END libsymphony
 
 # RFS MSM
+RFS_APQ_GNSS_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/apq/gnss/
+$(RFS_APQ_GNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating RFS APQ GNSS folder structure: $@"
+	@rm -rf $@
+	@mkdir -p $(dir $@)/readonly
+	$(hide) ln -sf /data/vendor/tombstones/rfs/modem $@/ramdumpgns
+	$(hide) ln -sf /persist/rfs/apq/gnss $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
+
+RFS_MDM_ADSP_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/adsp/
+$(RFS_MDM_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating RFS MDM ADSP folder structure: $@"
+	@rm -rf $@
+	@mkdir -p $(dir $@)/readonly
+	$(hide) ln -sf /data/vendor/tombstones/rfs/lpass $@/ramdumps
+	$(hide) ln -sf /persist/rfs/mdm/adsp $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
+
+RFS_MDM_MPSS_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/mpss/
+$(RFS_MDM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating RFS MDM MPSS folder structure: $@"
+	@rm -rf $@
+	@mkdir -p $(dir $@)/readonly
+	$(hide) ln -sf /data/vendor/tombstones/rfs/modem $@/ramdumps
+	$(hide) ln -sf /persist/rfs/mdm/mpss $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
+
+RFS_MDM_SLPI_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/slpi/
+$(RFS_MDM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating RFS MDM SLPI folder structure: $@"
+	@rm -rf $@
+	@mkdir -p $(dir $@)/readonly
+	$(hide) ln -sf /data/vendor/tombstones/rfs/slpi $@/ramdumps
+	$(hide) ln -sf /persist/rfs/mdm/slpi $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
+
+RFS_MDM_TN_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/tn/
+$(RFS_MDM_TN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating RFS MDM TN folder structure: $@"
+	@rm -rf $@
+	@mkdir -p $(dir $@)/readonly
+	$(hide) ln -sf /data/vendor/tombstones/rfs/tn $@/ramdumps
+	$(hide) ln -sf /persist/rfs/mdm/tn $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
+
 RFS_MSM_ADSP_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/msm/adsp/
 $(RFS_MSM_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating RFS MSM ADSP folder structure: $@"
@@ -124,6 +245,7 @@ $(RFS_MSM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@/*
 	@mkdir -p $(dir $@)/readonly/vendor
 	$(hide) ln -sf /data/vendor/tombstones/rfs/modem $@/ramdumps
+	$(hide) ln -sf /data/vendor/radio/modem_config $@/readonly/modem_config
 	$(hide) ln -sf /persist/rfs/msm/mpss $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
@@ -142,7 +264,8 @@ $(RFS_MSM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
 
-ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(RFS_APQ_GNSS_SYMLINKS) $(RFS_MDM_ADSP_SYMLINKS) $(RFS_MDM_MPSS_SYMLINKS) $(RFS_MDM_SLPI_SYMLINKS) $(RFS_MDM_TN_SYMLINKS) $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS)
+
 # END RFS MSM
 
 # WIDEVINE Images

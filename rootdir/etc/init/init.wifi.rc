@@ -1,0 +1,134 @@
+# Copyright (c) 2009-2012, Code Aurora Forum. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of Code Aurora nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+service wififtmd /vendor/bin/wififtmd
+    class late_start
+    user root
+    group radio system
+    oneshot
+
+#WCN399x doesn`t used on property. but it is started at init service of class main
+#on property:wifi_ftm.wififtmd_start=1
+#    start wififtmd
+
+#on property:wifi_ftm.wififtmd_start=0
+#    stop wififtmd
+
+#[START][LGE_WIFI][US]: DISA NIAP wifi feature
+
+on post-fs-data
+    start wififtmd_niap
+
+on post-fs-data
+    start wififtmd_niapxml_enc
+
+on post-fs-data
+    start wififtmd_niapxml_dec
+
+on property:wifi_ftm.lge.disa_kek=1
+    start wififtmd_niap
+
+on property:wifi_ftm.lge.disa_kek=2
+    stop wififtmd_niap
+
+on property:wifi_ftm.lge.disa_kek=0
+    stop wififtmd_niap
+
+on property:wifi_ftm.lge.disa_wificonfig_enc=1
+    start wififtmd_niapxml_enc
+
+on property:wifi_ftm.lge.disa_wificonfig_enc=0
+    stop wififtmd_niapxml_enc
+
+on property:wifi_ftm.lge.disa_wificonfig_dec=1
+    start wififtmd_niapxml_dec
+
+on property:wifi_ftm.lge.disa_wificonfig_dec=0
+    stop wififtmd_niapxml_dec
+
+service wififtmd_niap /vendor/bin/wififtmd -niap
+    user root
+    group radio system
+    disabled
+    oneshot
+
+service wififtmd_niapxml_enc /vendor/bin/wififtmd -niapxml -enc
+    user root
+    group radio system
+    disabled
+    oneshot
+
+service wififtmd_niapxml_dec /vendor/bin/wififtmd -niapxml -dec
+    user root
+    group radio system
+    disabled
+    oneshot
+
+#[END][LGE_WIFI][COMMON]: DISA NIAP wifi feature
+
+# LGE Wi-Fi wlan_ril daemon.
+service wlan_rild /vendor/bin/hw/wlan_ril
+    class main
+    user wifi
+    group wifi radio system net_raw net_admin
+    disabled
+    oneshot
+
+on property:wlan_ril_start=enable
+    start wlan_rild
+
+on property:wlan_ril_start=disable
+    stop wlan_rild
+
+on boot
+mkdir /dev/socket/wlan_ril 0770 wifi wifi
+chmod 2770 /dev/socket/wlan_ril
+
+#service ftm_ptt /system/bin/ftm_ptt -d
+#    class late_start
+#    user root
+#    group radio
+#    disabled
+#    oneshot
+#
+#on property:hw.ftm_ptt_start=1
+#    start ftm_ptt
+#
+#on property:hw.ftm_ptt_start=0
+#    stop ftm_ptt
+# Disable unused service in joan project
+#service ptt_socket_app /system/bin/ptt_socket_app
+#    class main
+#    user system
+#    group system
+#    oneshot
+#
+#service wcnss-service /system/bin/wcnss_service
+#    class main
+#    user system
+#    group system wifi radio
+#    oneshot
