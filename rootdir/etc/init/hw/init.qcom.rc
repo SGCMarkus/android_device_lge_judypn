@@ -63,13 +63,14 @@ on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 
 on early-boot
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/test_props.sh early-boot
+
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     # Allow subsystem (modem etc) debugging
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
-    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -211,6 +212,8 @@ on boot
 
     # load WIGIG platform driver
     insmod /vendor/lib/modules/msm_11ad_proxy.ko
+
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/restart_framework.sh
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -1243,3 +1246,10 @@ service vendor.loggy /vendor/bin/loggy.sh
     class main
     user root
     oneshot
+    disabled
+
+service vendor.gettestprops /vendor/bin/test_props.sh
+    class main
+    user root
+    oneshot
+    disabled
