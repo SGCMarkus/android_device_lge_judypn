@@ -37,124 +37,124 @@ $(FIRMWARE_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating $(FIRMWARE_MOUNT_POINT)"
 	@mkdir -p $(TARGET_OUT_VENDOR)/firmware_mnt
 
-ELS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/els
-$(ELS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(ELS_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/els
+#ELS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/els
+#$(ELS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(ELS_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/els
 
-SNS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/sns
-$(SNS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(SNS_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/sns
+#SNS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/sns
+#$(SNS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(SNS_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/sns
 
 DSP_MOUNT_POINT := $(TARGET_OUT_VENDOR)/dsp
 $(DSP_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating $(DSP_MOUNT_POINT)"
 	@mkdir -p $(TARGET_OUT_VENDOR)/dsp
 
-DRM_MOUNT_POINT := $(TARGET_OUT_VENDOR)/persist-lg
-$(DRM_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(DRM_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/persist-lg
+#DRM_MOUNT_POINT := $(TARGET_OUT_VENDOR)/persist-lg
+#$(DRM_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(DRM_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/persist-lg
 
-MPT_MOUNT_POINT := $(TARGET_OUT_VENDOR)/mpt
-$(MPT_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(MPT_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/mpt
+#MPT_MOUNT_POINT := $(TARGET_OUT_VENDOR)/mpt
+#$(MPT_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(MPT_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/mpt
 
-SRTC_MOUNT_POINT := $(TARGET_OUT_VENDOR)/srtc
-$(SRTC_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(SRTC_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/srtc
+#SRTC_MOUNT_POINT := $(TARGET_OUT_VENDOR)/srtc
+#$(SRTC_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(SRTC_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/srtc
 
-POWER_MOUNT_POINT := $(TARGET_OUT_VENDOR)/power
-$(POWER_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(POWER_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/power
+#POWER_MOUNT_POINT := $(TARGET_OUT_VENDOR)/power
+#$(POWER_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(POWER_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/power
 
-VZW_MOUNT_POINT := $(TARGET_OUT_VENDOR)/vzw/quality
-$(VZW_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(VZW_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/vzw/quality
+#VZW_MOUNT_POINT := $(TARGET_OUT_VENDOR)/vzw/quality
+#$(VZW_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(VZW_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/vzw/quality
 
-ERI_MOUNT_POINT := $(TARGET_OUT_VENDOR)/eri
-$(ERI_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(ERI_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/eri
+#ERI_MOUNT_POINT := $(TARGET_OUT_VENDOR)/eri
+#$(ERI_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(ERI_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/eri
 
-CARRIER_MOUNT_POINT := $(TARGET_OUT_VENDOR)/carrier
-$(CARRIER_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(CARRIER_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/carrier
+#CARRIER_MOUNT_POINT := $(TARGET_OUT_VENDOR)/carrier
+#$(CARRIER_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(CARRIER_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/carrier
 
-PERSDATA_MOUNT_POINT := $(TARGET_OUT_VENDOR)/persdata/absolute
-$(PERSDATA_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating $(PERSDATA_MOUNT_POINT)"
-	@mkdir -p $(TARGET_OUT_VENDOR)/persdata/absolute
+#PERSDATA_MOUNT_POINT := $(TARGET_OUT_VENDOR)/persdata/absolute
+#$(PERSDATA_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+#	@echo "Creating $(PERSDATA_MOUNT_POINT)"
+#	@mkdir -p $(TARGET_OUT_VENDOR)/persdata/absolute
 
-ALL_DEFAULT_INSTALLED_MODULES += $(ELS_MOUNT_POINT) $(SNS_MOUNT_POINT) $(DSP_MOUNT_POINT) \
-    $(DRM_MOUNT_POINT) $(MPT_MOUNT_POINT) $(SRTC_MOUNT_POINT) $(POWER_MOUNT_POINT) $(VZW_MOUNT_POINT) \
-    $(ERI_MOUNT_POINT) $(CARRIER_MOUNT_POINT) $(PERSDATA_MOUNT_POINT) $(FIRMWARE_MOUNT_POINT)
-#ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) $(DSP_MOUNT_POINT)
+#ALL_DEFAULT_INSTALLED_MODULES += $(ELS_MOUNT_POINT) $(SNS_MOUNT_POINT) $(DSP_MOUNT_POINT) \
+#    $(DRM_MOUNT_POINT) $(MPT_MOUNT_POINT) $(SRTC_MOUNT_POINT) $(POWER_MOUNT_POINT) $(VZW_MOUNT_POINT) \
+ #   $(ERI_MOUNT_POINT) $(CARRIER_MOUNT_POINT) $(PERSDATA_MOUNT_POINT) $(FIRMWARE_MOUNT_POINT)
+ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) $(DSP_MOUNT_POINT)
 # END A/B Vendor mounts
 
 # Symlinks
-#ELS_SYMLINKS := $(TARGET_OUT_VENDOR)/els
-#$(ELS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "MPT link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /mnt/product/els $@
+ELS_SYMLINKS := $(TARGET_OUT_VENDOR)/els
+$(ELS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "MPT link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/product/els $@
 
-#MPT_SYMLINKS := $(TARGET_OUT_VENDOR)/mpt
-#$(MPT_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "MPT link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /mnt/vendor/mpt $@
+MPT_SYMLINKS := $(TARGET_OUT_VENDOR)/mpt
+$(MPT_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "MPT link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/vendor/mpt $@
 
-#SNS_SYMLINKS := $(TARGET_OUT_VENDOR)/sns
-#$(SNS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "SNS link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /mnt/vendor/sns $@
+SNS_SYMLINKS := $(TARGET_OUT_VENDOR)/sns
+$(SNS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "SNS link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/vendor/sns $@
 
-#SRTC_SYMLINKS := $(TARGET_OUT_VENDOR)/srtc
-#$(SRTC_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "SRTC link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /mnt/product/srtc $@
+SRTC_SYMLINKS := $(TARGET_OUT_VENDOR)/srtc
+$(SRTC_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "SRTC link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/product/srtc $@
 
-#PERSIST_LG_SYMLINKS := $(TARGET_OUT_VENDOR)/persist-lg
-#$(PERSIST_LG_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Persist-LG link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /mnt/vendor/persist-lg $@
+PERSIST_LG_SYMLINKS := $(TARGET_OUT_VENDOR)/persist-lg
+$(PERSIST_LG_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Persist-LG link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/vendor/persist-lg $@
 
-#POWER_SYMLINKS := $(TARGET_OUT_VENDOR)/power
-#$(POWER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Power link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /mnt/vendor/power $@
+POWER_SYMLINKS := $(TARGET_OUT_VENDOR)/power
+$(POWER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Power link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/vendor/power $@
 
-#ABSOLUTE_SYMLINKS := $(TARGET_OUT_VENDOR)/persdata/absolute
-#$(ABSOLUTE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Absolute link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /mnt/vendor/absolute $@
+ABSOLUTE_SYMLINKS := $(TARGET_OUT_VENDOR)/persdata/absolute
+$(ABSOLUTE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Absolute link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/vendor/absolute $@
 
-#ALL_DEFAULT_INSTALLED_MODULES += $(SNS_SYMLINKS) $(PERSIST_LG_SYMLINKS) $(ELS_SYMLINKS) \
-#    $(MPT_SYMLINKS) $(SRTC_SYMLINKS) $(ABSOLUTE_SYMLINKS) $(POWER_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(SNS_SYMLINKS) $(PERSIST_LG_SYMLINKS) $(ELS_SYMLINKS) \
+    $(MPT_SYMLINKS) $(SRTC_SYMLINKS) $(ABSOLUTE_SYMLINKS) $(POWER_SYMLINKS)
 
 # END Symlinks
 
 # libsymphony
-SYMPHONY_LIBS := libsymphonypower.so libsymphony-cpu.so
+SYMPHONY_LIBS := libsymphony-cpu.so
 SYMPHONY_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib/,$(notdir $(SYMPHONY_LIBS)))
 $(SYMPHONY_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Symphony lib link: $@"
@@ -162,7 +162,15 @@ $(SYMPHONY_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf /vendor/lib/libsymphony-1.1.4.so $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(SYMPHONY_SYMLINKS)
+SYMPHONYPOWER_LIBS := libsymphonypower.so
+SYMPHONYPOWER_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib/,$(notdir $(SYMPHONYPOWER_LIBS)))
+$(SYMPHONYPOWER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Symphony lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /vendor/lib/libsymphonypower-1.1.4.so $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(SYMPHONY_SYMLINKS) $(SYMPHONYPOWER_SYMLINKS)
 
 # END libsymphony
 

@@ -39,20 +39,20 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 113775689728
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 
-#BOARD_ROOT_EXTRA_FOLDERS := oem ftm # firmware persdata persist vzw 
-#BOARD_ROOT_EXTRA_SYMLINKS := \
-#    /mnt/vendor/persist:/persist \
-#    /mnt/product/carrier:/carrier \
-#    /vendor/dps:/dsp \
-#    /mnt/vendor/eri:/eri \
-#    /mnt/vendor/absolute:/persdata \
-#    /vendor/firmware_mnt:/firmware
-
-BOARD_ROOT_EXTRA_FOLDERS := oem firmware persist persdata vzw ftm
+BOARD_ROOT_EXTRA_FOLDERS := oem ftm # firmware persdata persist vzw 
 BOARD_ROOT_EXTRA_SYMLINKS := \
-    /vendor/carrier:/carrier \
+    /mnt/vendor/persist:/persist \
+    /mnt/product/carrier:/carrier \
     /vendor/dps:/dsp \
-    /vendor/eri:/eri
+    /mnt/vendor/eri:/eri \
+    /mnt/vendor/absolute:/persdata \
+    /vendor/firmware_mnt:/firmware
+
+#BOARD_ROOT_EXTRA_FOLDERS := oem firmware persist persdata vzw ftm
+#BOARD_ROOT_EXTRA_SYMLINKS := \
+#    /vendor/carrier:/carrier \
+#    /vendor/dps:/dsp \
+#    /vendor/eri:/eri
 
 
 #    /mnt/vendor/sns:/vendor/sns \

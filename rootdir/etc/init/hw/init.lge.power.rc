@@ -1,5 +1,5 @@
-#!/system/bin/sh
-# Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
+# Copyright (c) 2011, Code Aurora Forum. All rights reserved.
+# Copyright (c) 2011-2012, LG Electronics Inc. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -8,7 +8,7 @@
 #     * Redistributions in binary form must reproduce the above copyright
 #       notice, this list of conditions and the following disclaimer in the
 #       documentation and/or other materials provided with the distribution.
-#     * Neither the name of The Linux Foundation nor
+#     * Neither the name of Code Aurora nor
 #       the names of its contributors may be used to endorse or promote
 #       products derived from this software without specific prior written
 #       permission.
@@ -25,29 +25,30 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+
+# pm debug mask enable(clock/resume irq)
 on boot
+   write /sys/kernel/debug/clk/debug_suspend 1
+   write /sys/module/msm_show_resume_irq/parameters/debug_mask 1
+# printk log level
+   write /proc/sys/kernel/printk "7 6 1 7"
 
-# Feature chip vendor : qct
-setprop bluetooth.chip.vendor qcom
+# LGE gbmd
+service vendor.gbmd /vendor/bin/gbmd
+   class main
+   socket gbm-client stream 660 system system
+   user system
+   group system
 
-# Enable AVRCP Browsing
-setprop persist.service.avrcp.browsing 1
+# LGE prmd
+service vendor.prmd /vendor/bin/prmd
+   class main
+   socket prm-client stream 660 system system
+   user system
+   group system
 
-# SCMS-T property set during phone Booting
-setprop persist.service.bdroid.a2dp_con 0
-setprop persist.service.bdroid.scms_t 0
-
-# RSSI offloading feature
-# setprop persist.service.bdroid.parking 1
-
-# Load bdaddr from ftm_item when BT on
-service bdaddr_loader /vendor/bin/bdaddr_loader
-    class late_start
-    user root
-    group bluetooth net_bt_admin
-    oneshot
-
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
-    user root
-    oneshot
+# LG Hiddenmenu smpl_count service
+service vendor.smpl_count /vendor/bin/smpl_count
+   class main
+   user root
+   oneshot

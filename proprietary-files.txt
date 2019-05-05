@@ -261,6 +261,34 @@ vendor/lib/vendor.lge.hardware.configstore@1.0_vendor.so
 #vendor/lib64/hw/android.hardware.contexthub@1.0-impl.generic.so
 #vendor/lib/hw/android.hardware.contexthub@1.0-impl.generic.so
 
+# DRM
+vendor/bin/qseecomd
+vendor/bin/seemp_healthd
+vendor/lib64/libdrmfs.so
+vendor/lib64/libdrmtime.so
+vendor/lib64/libGPreqcancel.so
+vendor/lib64/libGPreqcancel_svc.so
+vendor/lib64/libqisl.so
+vendor/lib64/libQSEEComAPI.so
+vendor/lib64/librpmb.so
+vendor/lib64/libSecureUILib.so
+vendor/lib64/libsecureui_svcsock.so
+vendor/lib64/libspl.so
+vendor/lib64/libssd.so
+vendor/lib64/libStDrvInt.so
+vendor/lib64/libtzdrmgenprov.so
+vendor/lib/libcppf.so
+vendor/lib/libdrmfs.so
+vendor/lib/libdrmtime.so
+vendor/lib/libGPreqcancel.so
+vendor/lib/libGPreqcancel_svc.so
+vendor/lib/libqisl.so
+vendor/lib/libQSEEComAPI.so
+vendor/lib/librpmb.so
+vendor/lib/libspl.so
+vendor/lib/libssd.so
+vendor/lib/libStDrvInt.so
+vendor/lib/libtzdrmgenprov.so
 
 # DSP
 #vendor/bin/chre
@@ -314,6 +342,19 @@ vendor/lib/rfsa/adsp/WmaProDecoderModule.so.1
 vendor/lib/rfsa/adsp/WmaStdDecoderModule.so.1
 vendor/lib64/libsymphonypower-1.1.4.so
 vendor/lib64/libsymphony-1.1.4.so
+
+# Fingerprint
+vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
+vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
+vendor/lib64/hw/fingerprint.sdm845.so
+vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1_vendor.so
+vendor/lib64/libgf_hal.so
+vendor/lib64/libgf_ca.so
+vendor/lib64/libgf_algo.so
+vendor/lib/hw/fingerprint.sdm845.so
+vendor/lib/libgf_hal.so
+vendor/lib/libgf_ca.so
+vendor/lib/libgf_algo.so
 
 # Firmware (Audio)
 vendor/firmware/Tfa9872.cnt
@@ -369,60 +410,6 @@ vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 
-# GPS
-lib/vendor.qti.gnss@1.0.so
-lib64/vendor.qti.gnss@1.0.so
-vendor/lib/libpcas_vendor.so
-vendor/lib64/libpcas_vendor.so
-vendor/bin/hw/vendor.qti.gnss@1.1-service
-vendor/bin/loc_launcher
-vendor/bin/lowi-server
-vendor/bin/slim_daemon
-vendor/bin/xtra-daemon
-vendor/etc/gps.conf
-vendor/etc/init/vendor.qti.gnss@1.1-service.rc
-vendor/lib/hw/vendor.qti.gnss@1.1-impl.so
-vendor/lib/libgnsspps.so
-vendor/lib/liblocation_api.so
-vendor/lib/libloc_core.so
-vendor/lib/libloc_pla.so
-vendor/lib/libloc_stub.so
-vendor/lib/libdiagjni.so
-vendor/lib/libevent_observer.so
-vendor/lib/libgps.utils.so
-vendor/lib/vendor.qti.gnss@1.0_vendor.so
-vendor/lib/vendor.qti.gnss@1.1_vendor.so
-vendor/lib64/hw/vendor.qti.gnss@1.1-impl.so
-vendor/lib64/libloc_api_v02.so
-vendor/lib64/libloc_ds_api.so
-vendor/lib64/libdataitems.so
-vendor/lib64/libdrplugin_client.so
-vendor/lib64/libDRPlugin.so
-vendor/lib64/libgnsspps.so
-vendor/lib64/liblocation_api.so
-vendor/lib64/libloc_core.so
-vendor/lib64/libloc_pla.so
-vendor/lib64/libloc_stub.so
-vendor/lib64/libdiagjni.so
-vendor/lib64/libevent_observer.so
-vendor/lib64/libgps.utils.so
-vendor/lib64/libflp.so
-vendor/lib64/libgeofence.so
-vendor/lib64/libizat_client_api.so
-vendor/lib64/libizat_core.so
-vendor/lib64/liblbs_core.so
-vendor/lib64/libloc_externalDr.so
-vendor/lib64/liblocationservice_glue.so
-vendor/lib64/liblocationservice.so
-vendor/lib64/liblowi_client.so
-vendor/lib64/libsensorndkbridge.so
-vendor/lib64/libslimclient.so
-vendor/lib64/libulp2.so
-vendor/lib64/libxtadapter.so
-vendor/lib64/libxtwifi_ulp_adaptor.so
-vendor/lib64/vendor.qti.gnss@1.0_vendor.so
-vendor/lib64/vendor.qti.gnss@1.1_vendor.so
-
 # HotwordEnrollment
 -priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
 -priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
@@ -439,6 +426,24 @@ vendor/lib/libkeymasterdeviceutils.so
 vendor/lib/libkeymasterprovision.so
 vendor/lib/libkeymasterutils.so
 
+# Light
+#lib64/lib64/android.hardware.light@2.0.so
+#lib/lib64/android.hardware.light@2.0.so
+#vendor/bin/hw/android.hardware.light@2.0-service
+#vendor/etc/init/android.hardware.light@2.0-service.rc
+#vendor/lib64/hw/android.hardware.light@2.0-impl.so
+#vendor/lib64/hw/lights.sdm845.so
+#vendor/lib/hw/android.hardware.light@2.0-impl.so
+#vendor/lib/hw/lights.sdm845.so
+
+# Peripheral manager
+vendor/bin/pm-proxy
+vendor/bin/pm-service
+vendor/lib64/libperipheral_client.so
+vendor/lib64/libspcom.so
+vendor/lib/libperipheral_client.so
+vendor/lib/libspcom.so
+
 # QDCM calibration data
 vendor/etc/qdcm_calib_data_SW43406_cmd_mode_dsc_dsi_panel.xml
 vendor/etc/qdcm_calib_data_SW43408A_cmd_mode_dsc_dsi_panel.xml
@@ -451,10 +456,33 @@ vendor/lib/libscveFaceRecognition.so
 
 # Sensors
 vendor/bin/sensors.qcom
+#vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
+#vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
+#vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
+#vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
+vendor/lib64/libsensorcal.so
+vendor/lib64/libsensorslog.so
+vendor/lib64/libssc.so
+vendor/lib64/libssc_default_listener.so
+#vendor/lib64/libsnsapi.so
+#vendor/lib64/libsns_fastRPC_util.so
+vendor/lib64/libsns_low_lat_stream_stub.so
+vendor/lib64/libsnsdiaglog.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/sensors.sar.so
+#vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
+#vendor/lib/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
+vendor/lib/libsensorcal.so
+vendor/lib/libsensorslog.so
+vendor/lib/libssc.so
+vendor/lib/libssc_default_listener.so
+#vendor/lib/libsnsapi.so
+#vendor/lib/libsns_fastRPC_util.so
+vendor/lib/libsns_low_lat_stream_stub.so
+vendor/lib/libsnsdiaglog.so
 vendor/lib/sensors.ssc.so
 vendor/lib/sensors.sar.so
+#vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
 
 # Sensors configs
 vendor/etc/sensors/hals.conf
@@ -502,7 +530,10 @@ vendor/etc/sensors/registry/config/spl06_0.json
 vendor/etc/sensors/registry/config/tmd3727.json
 vendor/etc/sensors/registry/registry/sensors_settings
 
-# Thermal
+# Thermal engine
+vendor/bin/thermal-engine
+vendor/lib64/libthermalclient.so
+vendor/lib/libthermalclient.so
 vendor/etc/thermal-engine-845.conf
 vendor/etc/thermal-engine.conf
 vendor/etc/thermal-engine-default.conf

@@ -1,8 +1,8 @@
 # Sensor
 on post-fs-data
-    mkdir /vendor/sns/sensors/ 0755 system system
-    mkdir /vendor/sns/sensors/registry/ 0755 system system
-    mkdir /vendor/sns/sensors/registry/registry 0755 system system
+    mkdir /mnt/vendor/sns/sensors/ 0755 system system
+    mkdir /mnt/vendor/sns/sensors/registry/ 0755 system system
+    mkdir /mnt/vendor/sns/sensors/registry/registry/ 0755 system system
 
     chown system system /sys/devices/virtual/input/lge_sar_rf/regreset
     chown system system /sys/devices/virtual/input/lge_sar_rf/onoff
