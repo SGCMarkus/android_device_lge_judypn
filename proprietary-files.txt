@@ -250,10 +250,10 @@ vendor/lib64/camera/com.qti.tuned.sl846_global.bin
 vendor/lib64/camera/com.qti.tuned.sl846_tmus.bin
 
 # Configstore
-vendor/bin/hw/vendor.lge.hardware.configstore@1.0-service
-vendor/etc/init/vendor.lge.hardware.configstore@1.0-service.rc
-vendor/lib64/vendor.lge.hardware.configstore@1.0_vendor.so
-vendor/lib/vendor.lge.hardware.configstore@1.0_vendor.so
+#vendor/bin/hw/vendor.lge.hardware.configstore@1.0-service
+#vendor/etc/init/vendor.lge.hardware.configstore@1.0-service.rc
+#vendor/lib64/vendor.lge.hardware.configstore@1.0_vendor.so
+#vendor/lib/vendor.lge.hardware.configstore@1.0_vendor.so
 
 # Contexthub
 #vendor/bin/hw/android.hardware.contexthub@1.0-service
@@ -415,13 +415,13 @@ vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 -priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
 
 # Keystore
-#vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
-#vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc
-#vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so
+vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
+vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc
+vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
-#vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so
+vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so
 vendor/lib/libkeymasterdeviceutils.so
 vendor/lib/libkeymasterprovision.so
 vendor/lib/libkeymasterutils.so

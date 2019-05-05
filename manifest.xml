@@ -19,7 +19,7 @@
         </interface>
         <fqname>@4.0::IEffectsFactory/default</fqname>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>android.hardware.biometrics.fingerprint</name>
         <transport>hwbinder</transport>
         <version>2.1</version>
@@ -27,7 +27,7 @@
             <name>IBiometricsFingerprint</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
         <transport>hwbinder</transport>
@@ -68,7 +68,7 @@
     <hal format="hidl">
         <name>android.hardware.configstore</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>ISurfaceFlingerConfigs</name>
             <instance>default</instance>
@@ -223,7 +223,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
         <version>1.2</version>
@@ -237,17 +237,21 @@
             <instance>slot1</instance>
             <instance>slot2</instance>
         </interface>
+        <fqname>@1.2::IRadio/slot1</fqname>
+        <fqname>@1.2::IRadio/slot2</fqname>
+        <fqname>@1.2::ISap/slot1</fqname>
+        <fqname>@1.2::ISap/slot2</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.radio.deprecated</name>
+        <name>android.hardware.radio.config</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IOemHook</name>
-            <instance>slot1</instance>
-            <instance>slot2</instance>
+            <name>IRadioConfig</name>
+            <instance>default</instance>
         </interface>
-    </hal>
+        <fqname>@1.0::IRadioConfig/default</fqname>
+    </hal>-->
     <hal format="hidl">
         <name>android.hardware.renderscript</name>
         <transport arch="32+64">passthrough</transport>
@@ -531,7 +535,7 @@
             <instance>default</instance>
         </interface>
     </hal>-->
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.configstore</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -547,7 +551,7 @@
             <name>IPowerConfigs</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <!--<hal format="hidl">
         <name>vendor.lge.hardware.data</name>
         <transport>hwbinder</transport>
