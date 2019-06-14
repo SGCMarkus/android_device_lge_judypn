@@ -223,7 +223,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <!--<hal format="hidl">
+    <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
         <version>1.2</version>
@@ -251,7 +251,7 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IRadioConfig/default</fqname>
-    </hal>-->
+    </hal>
     <hal format="hidl">
         <name>android.hardware.renderscript</name>
         <transport arch="32+64">passthrough</transport>
@@ -767,7 +767,7 @@
             <instance>default</instance>
         </interface>
     </hal>-->
-    <hal format="hidl">
+    <!--<hal format="hidl">
         <name>vendor.lge.hardware.securefuse</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -775,7 +775,7 @@
             <name>ISecureFuse</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <!--<hal format="hidl">
         <name>vendor.lge.hardware.sensors</name>
         <transport>hwbinder</transport>
@@ -1131,15 +1131,6 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.hardware.sensorscalibrate</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISensorsCalibrate</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.hardware.tui_comm</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -1193,7 +1184,4 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <sepolicy>
-        <version>27.0</version>
-    </sepolicy>
 </manifest>

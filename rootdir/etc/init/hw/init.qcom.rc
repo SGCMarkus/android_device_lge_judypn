@@ -65,7 +65,7 @@ on init
     mount none /system/lib/libcutils.so /system/lib/vndk-sp-28/libcutils.so bind
 
 on post-fs
-    start vendor.loggy
+#    start vendor.loggy
     chmod 0755 /sys/kernel/debug/tracing
 
 on early-boot
@@ -711,6 +711,12 @@ service vendor.sensors /vendor/bin/sscrpcd
     disabled
 
 service vendor.sensors.qcom /vendor/bin/sensors.qcom
+    class core
+    user system
+    group system
+    disabled
+
+service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
     user system
     group system

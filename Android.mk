@@ -286,7 +286,7 @@ $(WIDEVINE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "WIDEVINE firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /vendor/persist-lg/firmware/$(notdir $@) $@
+	$(hide) ln -sf /mnt/vendor/persist-lg/firmware/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WIDEVINE_SYMLINKS)
 # END WIDEVINE Images
@@ -300,14 +300,14 @@ $(BDWLAN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "BDWLAN firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /vendor/persist-lg/wifi/qcom/$(notdir $@) $@
+	$(hide) ln -sf /mnt/vendor/persist-lg/wifi/qcom/$(notdir $(basename $@)_cache.bin) $@
 
 WCNSS_INI_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 $(WCNSS_INI_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@echo "WCNSS config ini link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /vendor/etc/wifi/$(notdir $@) $@
+	$(hide) ln -sf /data/misc/wifi/$(notdir $@) $@
 
 WCNSS_MAC_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/wlan_mac.bin
 $(WCNSS_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)

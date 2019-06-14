@@ -36,9 +36,9 @@ start_sensors()
         chmod -h 664 /persist/sensors/sensors_settings
         mkdir -p /persist/sensors/registry/registry
         chown -h system.root /persist/sensors/sensors_settings
-        chown -R system.system /vendor/sns/sensors/registry/registry/*
-        chown -h system.system /vendor/sns/sensors/registry/sns_version
-        start sensors
+        chown -R system.system /mnt/vendor/sns/sensors/registry/registry/*
+        chown -h system.system /mnt/vendor/sns/sensors/registry/sns_version
+        start vendor.sensors.qcom
     fi
 }
 

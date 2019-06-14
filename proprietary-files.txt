@@ -10,6 +10,7 @@ vendor/etc/acdbdata/Handset_cal.acdb
 
 # Camera
 vendor/lib/hw/camera.sdm845.so
+vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/libAutoContrast.so
 vendor/lib/libSJVideoNR.so
 vendor/lib/libarcsoft_beauty_picselfie.so
@@ -229,6 +230,7 @@ vendor/lib64/camera/com.qti.sensormodule.sl556.bin
 vendor/lib64/camera/com.qti.sensormodule.sl846.bin
 
 # Camera - tuned
+vendor/etc/camera/camera_tune_config.xml
 vendor/lib/camera/com.qti.tuned.default.bin
 vendor/lib/camera/com.qti.tuned.imx351.bin
 vendor/lib/camera/com.qti.tuned.imx363.bin
@@ -291,7 +293,7 @@ vendor/lib/libStDrvInt.so
 vendor/lib/libtzdrmgenprov.so
 
 # DSP
-#vendor/bin/chre
+vendor/bin/chre
 vendor/lib/libsymphony-1.1.4.so
 vendor/lib/libsymphonypower-1.1.4.so
 vendor/lib/rfsa/adsp/activity.so
@@ -344,17 +346,17 @@ vendor/lib64/libsymphonypower-1.1.4.so
 vendor/lib64/libsymphony-1.1.4.so
 
 # Fingerprint
-vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
-vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
+#vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
+#vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc|a60eddac544ea668be98117dfbaad40de301cd56
 vendor/lib64/hw/fingerprint.sdm845.so
-vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1_vendor.so
-vendor/lib64/libgf_hal.so
-vendor/lib64/libgf_ca.so
-vendor/lib64/libgf_algo.so
+#vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1_vendor.so
+#vendor/lib64/libgf_hal.so
+#vendor/lib64/libgf_ca.so
+#vendor/lib64/libgf_algo.so
 vendor/lib/hw/fingerprint.sdm845.so
-vendor/lib/libgf_hal.so
-vendor/lib/libgf_ca.so
-vendor/lib/libgf_algo.so
+#vendor/lib/libgf_hal.so
+#vendor/lib/libgf_ca.so
+#vendor/lib/libgf_algo.so
 
 # Firmware (Audio)
 vendor/firmware/Tfa9872.cnt
@@ -403,6 +405,20 @@ vendor/firmware/leia_pm4_470.fw
 # Firmware (NFC)
 vendor/firmware/libpn553_fw_64.so:vendor/lib64/libpn553_fw_64.so
 vendor/firmware/libpn553_fw.so:vendor/lib/libpn553_fw.so
+
+# Firmware (Wifi)
+vendor/etc/wifi/bdwlan.bin
+vendor/etc/wifi/bdwlan_ch0.bin
+vendor/etc/wifi/bdwlan_ch1.bin
+vendor/etc/wifi/GLOBAL/bdwlan.bin
+vendor/etc/wifi/GLOBAL/bdwlan_ch0.bin
+vendor/etc/wifi/GLOBAL/bdwlan_ch1.bin
+vendor/etc/wifi/KR_ALL/bdwlan.bin
+vendor/etc/wifi/KR_ALL/bdwlan_ch0.bin
+vendor/etc/wifi/KR_ALL/bdwlan_ch1.bin
+vendor/etc/wifi/NA_ALL/bdwlan.bin
+vendor/etc/wifi/NA_ALL/bdwlan_ch0.bin
+vendor/etc/wifi/NA_ALL/bdwlan_ch1.bin
 
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
