@@ -37,142 +37,37 @@ $(FIRMWARE_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating $(FIRMWARE_MOUNT_POINT)"
 	@mkdir -p $(TARGET_OUT_VENDOR)/firmware_mnt
 
-#ELS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/els
-#$(ELS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(ELS_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/els
-
-#SNS_MOUNT_POINT := $(TARGET_OUT_VENDOR)/sns
-#$(SNS_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(SNS_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/sns
-
 DSP_MOUNT_POINT := $(TARGET_OUT_VENDOR)/dsp
 $(DSP_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating $(DSP_MOUNT_POINT)"
 	@mkdir -p $(TARGET_OUT_VENDOR)/dsp
 
-#DRM_MOUNT_POINT := $(TARGET_OUT_VENDOR)/persist-lg
-#$(DRM_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(DRM_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/persist-lg
+BT_FIRMWARE_MOUNT_POINT := $(TARGET_OUT_VENDOR)/bt_firmware
+$(BT_FIRMWARE_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $(BT_FIRMWARE_MOUNT_POINT)"
+	@mkdir -p $(TARGET_OUT_VENDOR)/bt_firmware
 
-#MPT_MOUNT_POINT := $(TARGET_OUT_VENDOR)/mpt
-#$(MPT_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(MPT_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/mpt
-
-#SRTC_MOUNT_POINT := $(TARGET_OUT_VENDOR)/srtc
-#$(SRTC_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(SRTC_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/srtc
-
-#POWER_MOUNT_POINT := $(TARGET_OUT_VENDOR)/power
-#$(POWER_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(POWER_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/power
-
-#VZW_MOUNT_POINT := $(TARGET_OUT_VENDOR)/vzw/quality
-#$(VZW_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(VZW_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/vzw/quality
-
-#ERI_MOUNT_POINT := $(TARGET_OUT_VENDOR)/eri
-#$(ERI_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(ERI_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/eri
-
-#CARRIER_MOUNT_POINT := $(TARGET_OUT_VENDOR)/carrier
-#$(CARRIER_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(CARRIER_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/carrier
-
-#PERSDATA_MOUNT_POINT := $(TARGET_OUT_VENDOR)/persdata/absolute
-#$(PERSDATA_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating $(PERSDATA_MOUNT_POINT)"
-#	@mkdir -p $(TARGET_OUT_VENDOR)/persdata/absolute
-
-#ALL_DEFAULT_INSTALLED_MODULES += $(ELS_MOUNT_POINT) $(SNS_MOUNT_POINT) $(DSP_MOUNT_POINT) \
-#    $(DRM_MOUNT_POINT) $(MPT_MOUNT_POINT) $(SRTC_MOUNT_POINT) $(POWER_MOUNT_POINT) $(VZW_MOUNT_POINT) \
- #   $(ERI_MOUNT_POINT) $(CARRIER_MOUNT_POINT) $(PERSDATA_MOUNT_POINT) $(FIRMWARE_MOUNT_POINT)
-ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) $(DSP_MOUNT_POINT)
+ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) $(DSP_MOUNT_POINT) $(BT_FIRMWARE_MOUNT_POINT)
 # END A/B Vendor mounts
 
-# Symlinks
-ELS_SYMLINKS := $(TARGET_OUT_VENDOR)/els
-$(ELS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "MPT link: $@"
+# libc++_shared
+CPP_LIBS := libc++_shared.so
+CPP32_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib/,$(notdir $(CPP_LIBS)))
+$(CPP32_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "C++ shared lib link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /mnt/product/els $@
+	$(hide) ln -sf /vendor/lib/libc++_shared_snpe.so $@
 
-MPT_SYMLINKS := $(TARGET_OUT_VENDOR)/mpt
-$(MPT_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "MPT link: $@"
+CPP64_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib64/,$(notdir $(CPP_LIBS)))
+$(CPP64_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "C++ shared lib link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /mnt/vendor/mpt $@
+	$(hide) ln -sf /vendor/lib64/libc++_shared_snpe.so $@
 
-SNS_SYMLINKS := $(TARGET_OUT_VENDOR)/sns
-$(SNS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "SNS link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /mnt/vendor/sns $@
-
-SRTC_SYMLINKS := $(TARGET_OUT_VENDOR)/srtc
-$(SRTC_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "SRTC link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /mnt/product/srtc $@
-
-PERSIST_LG_SYMLINKS := $(TARGET_OUT_VENDOR)/persist-lg
-$(PERSIST_LG_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Persist-LG link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /mnt/vendor/persist-lg $@
-
-POWER_SYMLINKS := $(TARGET_OUT_VENDOR)/power
-$(POWER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Power link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /mnt/vendor/power $@
-
-ABSOLUTE_SYMLINKS := $(TARGET_OUT_VENDOR)/persdata/absolute
-$(ABSOLUTE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Absolute link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /mnt/vendor/absolute $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(SNS_SYMLINKS) $(PERSIST_LG_SYMLINKS) $(ELS_SYMLINKS) \
-    $(MPT_SYMLINKS) $(SRTC_SYMLINKS) $(ABSOLUTE_SYMLINKS) $(POWER_SYMLINKS)
-
-# END Symlinks
-
-# libsymphony
-SYMPHONY_LIBS := libsymphony-cpu.so
-SYMPHONY_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib/,$(notdir $(SYMPHONY_LIBS)))
-$(SYMPHONY_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Symphony lib link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /vendor/lib/libsymphony-1.1.4.so $@
-
-SYMPHONYPOWER_LIBS := libsymphonypower.so
-SYMPHONYPOWER_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib/,$(notdir $(SYMPHONYPOWER_LIBS)))
-$(SYMPHONYPOWER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Symphony lib link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /vendor/lib/libsymphonypower-1.1.4.so $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(SYMPHONY_SYMLINKS) $(SYMPHONYPOWER_SYMLINKS)
-
-# END libsymphony
+ALL_DEFAULT_INSTALLED_MODULES += $(CPP32_SYMLINKS) $(CPP64_SYMLINKS)
+# END libc++_shared
 
 # RFS MSM
 RFS_APQ_GNSS_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/apq/gnss/
@@ -184,7 +79,7 @@ $(RFS_APQ_GNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/rfs/apq/gnss $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
 
 RFS_MDM_ADSP_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/adsp/
@@ -196,7 +91,7 @@ $(RFS_MDM_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/rfs/mdm/adsp $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
 
 RFS_MDM_MPSS_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/mpss/
@@ -208,7 +103,7 @@ $(RFS_MDM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/rfs/mdm/mpss $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
 
 RFS_MDM_SLPI_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/slpi/
@@ -220,7 +115,7 @@ $(RFS_MDM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/rfs/mdm/slpi $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
 
 RFS_MDM_TN_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/tn/
@@ -232,7 +127,7 @@ $(RFS_MDM_TN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/rfs/mdm/tn $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor
 
 RFS_MSM_ADSP_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/msm/adsp/
@@ -244,7 +139,7 @@ $(RFS_MSM_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/rfs/msm/adsp $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
 
 RFS_MSM_MPSS_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/msm/mpss/
@@ -257,7 +152,7 @@ $(RFS_MSM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/rfs/msm/mpss $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
 
 RFS_MSM_SLPI_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/msm/slpi/
@@ -269,12 +164,42 @@ $(RFS_MSM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/rfs/msm/slpi $@/readwrite
 	$(hide) ln -sf /persist/rfs/shared $@/shared
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
 
 ALL_DEFAULT_INSTALLED_MODULES += $(RFS_APQ_GNSS_SYMLINKS) $(RFS_MDM_ADSP_SYMLINKS) $(RFS_MDM_MPSS_SYMLINKS) $(RFS_MDM_SLPI_SYMLINKS) $(RFS_MDM_TN_SYMLINKS) $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS)
 
 # END RFS MSM
+
+# CPPF Images
+CPPF_IMAGES := \
+    cppf.b00 cppf.b01 cppf.b02 cppf.b03 cppf.b04 \
+    cppf.b05 cppf.b06 cppf.b07 cppf.mdt
+
+CPPF_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(CPPF_IMAGES)))
+$(CPPF_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "CPPF firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/vendor/persist-lg/firmware/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(CPPF_SYMLINKS)
+# END CPPF Images
+
+# HDCPSRM Images
+HDCPSRM_IMAGES := \
+    hdcpsrm.b00 hdcpsrm.b01 hdcpsrm.b02 hdcpsrm.b03 hdcpsrm.b04 \
+    hdcpsrm.b05 hdcpsrm.b06 hdcpsrm.b07 hdcpsrm.mdt
+
+HDCPSRM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(HDCPSRM_IMAGES)))
+$(HDCPSRM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "HDCPSRM firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /mnt/vendor/persist-lg/firmware/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(HDCPSRM_SYMLINKS)
+# END HDCPSRM Images
 
 # WIDEVINE Images
 WIDEVINE_IMAGES := \
@@ -307,14 +232,14 @@ $(WCNSS_INI_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@echo "WCNSS config ini link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /data/misc/wifi/$(notdir $@) $@
+	$(hide) ln -sf /mnt/vendor/persist-lg/wifi/$(notdir $@) $@
 
 WCNSS_MAC_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/wlan_mac.bin
 $(WCNSS_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@echo "WCNSS MAC bin link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /data/misc/wifi/$(notdir $@) $@
+	$(hide) ln -sf /mnt/vendor/persist-lg/wifi/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_INI_SYMLINK) $(WCNSS_MAC_SYMLINK) $(BDWLAN_SYMLINKS)
 # END Wifi

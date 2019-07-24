@@ -3852,27 +3852,6 @@ case "$target" in
 	    done
 	done
 
-    if [ -f /sys/devices/soc0/hw_platform ]; then
-        hw_platform=`cat /sys/devices/soc0/hw_platform`
-    else
-        hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
-    fi
-
-    if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-        platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
-    fi
-
-    case "$hw_platform" in
-        "MTP" | "Surf" | "RCM" )
-            # Start Host based Touch processing
-            case "$platform_subtype_id" in
-                "0" | "1")
-                    start_hbtp
-                    ;;
-            esac
-        ;;
-    esac
-
     echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
     configure_memory_parameters
     ;;

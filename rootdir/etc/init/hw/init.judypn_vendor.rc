@@ -1,4 +1,4 @@
-# judyln_lao_com vendor init rc
+# judypn_lao_com vendor init rc
 
 # For Kinibi(t-base), lge-secureboot@lge.com
 import /vendor/etc/init/init.kinibi.rc

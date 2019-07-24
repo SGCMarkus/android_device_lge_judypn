@@ -64,7 +64,7 @@ volume index from 0 to 100.
     <volume stream="AUDIO_STREAM_ALARM" deviceCategory="DEVICE_CATEGORY_EXT_MEDIA"
                                         ref="DEFAULT_DEVICE_CATEGORY_EXT_MEDIA_VOLUME_CURVE"/>
     <volume stream="AUDIO_STREAM_NOTIFICATION" deviceCategory="DEVICE_CATEGORY_HEADSET"
-                                               ref="DEFAULT_DEVICE_CATEGORY_HEADSET_VOLUME_CURVE"/>
+                                               ref="NOTIFICATION_ONLY_HEADSET_VOLUME_CURVE"/>
     <volume stream="AUDIO_STREAM_NOTIFICATION" deviceCategory="DEVICE_CATEGORY_SPEAKER" 
                                                ref="DRC_SPK_ATTN_COMBO_CURVE"/>
     <volume stream="AUDIO_STREAM_NOTIFICATION" deviceCategory="DEVICE_CATEGORY_EARPIECE"
@@ -120,13 +120,13 @@ volume index from 0 to 100.
     <volume stream="AUDIO_STREAM_TTS" deviceCategory="DEVICE_CATEGORY_EXT_MEDIA"
                                       ref="SILENT_VOLUME_CURVE"/>
     <volume stream="AUDIO_STREAM_ACCESSIBILITY" deviceCategory="DEVICE_CATEGORY_HEADSET"
-                                                ref="ACCESSIBILITY_VOLUME_CURVE"/>
+                                                ref="NON_MUTABLE_ACCESSIBILITY_VOLUME_CURVE"/>
     <volume stream="AUDIO_STREAM_ACCESSIBILITY" deviceCategory="DEVICE_CATEGORY_SPEAKER"
-                                                ref="DRC_SPK_ATTN_MEDIA_CURVE"/>
+                                                ref="NON_MUTABLE_DRC_SPK_ATTN_MEDIA_CURVE"/>
     <volume stream="AUDIO_STREAM_ACCESSIBILITY" deviceCategory="DEVICE_CATEGORY_EARPIECE"
-                                                ref="DEFAULT_MEDIA_VOLUME_CURVE"/>
+                                                ref="DEFAULT_NON_MUTABLE_VOLUME_CURVE"/>
     <volume stream="AUDIO_STREAM_ACCESSIBILITY" deviceCategory="DEVICE_CATEGORY_EXT_MEDIA"
-                                                ref="DEFAULT_MEDIA_VOLUME_CURVE"/>
+                                                ref="DEFAULT_NON_MUTABLE_VOLUME_CURVE"/>
     <volume stream="AUDIO_STREAM_REROUTING" deviceCategory="DEVICE_CATEGORY_HEADSET"
                                             ref="FULL_SCALE_VOLUME_CURVE"/>
     <volume stream="AUDIO_STREAM_REROUTING" deviceCategory="DEVICE_CATEGORY_SPEAKER"
@@ -166,6 +166,34 @@ volume index from 0 to 100.
         <point>60,-2600</point>
         <point>90,-1000</point>
         <point>100,0</point>
+    </reference>
+
+    <!-- **************************************************************** -->
+    <!-- Non-mutable lge volume curves:                               -->
+    <!--     * first point is always for index 0                          -->
+    <reference name="NON_MUTABLE_ACCESSIBILITY_VOLUME_CURVE">
+    <!-- Accessibility Volume Curve for headset-->
+        <point>0,-4800</point>
+        <point>20,-3500</point>
+        <point>60,-2200</point>
+        <point>100,-1300</point>
+    </reference>
+    <reference name="NON_MUTABLE_DRC_SPK_ATTN_MEDIA_CURVE">
+    <!--Accessibility Volume Curve for Speaker -->
+        <point>0,-5600</point>
+        <point>20,-4550</point>
+        <point>60,-2700</point>
+        <point>85,-1300</point>
+        <point>100,0</point>
+    </reference>
+<reference name="NOTIFICATION_ONLY_HEADSET_VOLUME_CURVE">
+    <!-- Headset only NOTI CURVE Based on DRC_SPK_ATTN_COMBO_CURVE -->
+        <point>1,-4000</point>
+        <point>35,-3000</point>
+        <point>65,-2100</point>
+        <point>80,-1500</point>
+        <point>90,-1000</point>
+        <point>100,-450</point>
     </reference>
 </volumes>
 

@@ -11,6 +11,9 @@ on post-fs-data
     #chargerlogo
     mkdir /mnt/vendor/persist-lg/chargerlogo 0771 system system
 
+    #Thermal Encryption
+    mkdir /mnt/vendor/persist-lg/thermal 0771 root shell
+
     #RCT
     rm /mnt/vendor/persist-lg/rct
     rm /mnt/vendor/persist-lg/rct.cfg
@@ -95,13 +98,15 @@ on post-fs-data
     exec - system system -- /vendor/bin/cpfirmware widevine /mnt/vendor/persist-lg/firmware
 
     #Create callduration file
-    mkdir /vendor/persist-lg/callduration 0770 system radio
+    mkdir /mnt/vendor/persist-lg/callduration 0770 system radio
+    chown system radio system /mnt/vendor/persist-lg/callduration
+    chmod 0770 /mnt/vendor/persist-lg/callduration
 
     #Create rtnlastdate file
     mkdir /vendor/persist-lg/rtnlastdate 0770 system radio
 
     #Create camera dir for EEPROM data
-    mkdir /vendor/persist-lg/camera 0771 cameraserver radio
+    mkdir mnt/vendor/persist-lg/camera 0771 cameraserver radio
 
     #Create Touch self test folder
     mkdir /data/vendor/touch 0771 system system

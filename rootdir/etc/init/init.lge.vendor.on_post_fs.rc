@@ -10,7 +10,7 @@ on post-fs
     mkdir /vendor/persist-lg/keymaster 0770 system system
 
     #USE_SECUREBOOT
-    #verity_update_state
+    verity_update_state
 
     #QFUSE
     write /sys/devices/platform/lge-qfprom/sec_read 0

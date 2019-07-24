@@ -357,7 +357,15 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=boot,adb && property:
     rm /config/usb_gadget/g1/configs/b.2/f4
     rm /config/usb_gadget/g1/configs/b.2/f5
     rmdir /config/usb_gadget/g1/configs/b.2
-    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x633A
+    write /config/usb_gadget/g1/bDeviceClass 239
+    write /config/usb_gadget/g1/bDeviceSubClass 2
+    write /config/usb_gadget/g1/bDeviceProtocol 1
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/diag.diag /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f3
+#   exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 

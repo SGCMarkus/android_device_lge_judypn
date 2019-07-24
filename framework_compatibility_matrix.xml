@@ -1,5 +1,137 @@
 <compatibility-matrix version="1.0" type="framework">
     <hal format="hidl" optional="true">
+        <name>android.hardware.authsecret</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAuthSecret</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.automotive.audiocontrol</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAudioControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.automotive.evs</name>
+        <version>1.0</version>
+        <interface>
+            <name>IEvsEnumerator</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.automotive.vehicle</name>
+        <version>2.0</version>
+        <interface>
+            <name>IVehicle</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.biometrics.fingerprint</name>
+        <version>2.1</version>
+        <interface>
+            <name>IBiometricsFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.bluetooth</name>
+        <version>1.0</version>
+        <interface>
+            <name>IBluetoothHci</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.bluetooth.a2dp</name>
+        <version>1.0</version>
+        <interface>
+            <name>IBluetoothAudioOffload</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.boot</name>
+        <version>1.0</version>
+        <interface>
+            <name>IBootControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.broadcastradio</name>
+        <version>1.0-1</version>
+        <interface>
+            <name>IBroadcastRadioFactory</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.broadcastradio</name>
+        <version>2.0</version>
+        <interface>
+            <name>IBroadcastRadio</name>
+            <regex-instance>.*</regex-instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.camera.provider</name>
+        <version>2.4</version>
+        <interface>
+            <name>ICameraProvider</name>
+            <regex-instance>[^/]+/[0-9]+</regex-instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.cas</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMediaCasService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.confirmationui</name>
+        <version>1.0</version>
+        <interface>
+            <name>IConfirmationUI</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.contexthub</name>
+        <version>1.0</version>
+        <interface>
+            <name>IContexthub</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.drm</name>
+        <version>1.0</version>
+        <interface>
+            <name>ICryptoFactory</name>
+            <regex-instance>.*</regex-instance>
+        </interface>
+        <interface>
+            <name>IDrmFactory</name>
+            <regex-instance>.*</regex-instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.dumpstate</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDumpstateDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>android.hardware.gnss</name>
         <version>1.0-1</version>
         <interface>
@@ -16,11 +148,47 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>android.hardware.health</name>
+        <name>android.hardware.gnss</name>
+        <version>1.0-1</version>
+        <interface>
+            <name>IGnss</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.ir</name>
+        <version>1.0</version>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.keymaster</name>
+        <version>4.0</version>
+        <interface>
+            <name>IKeymasterDevice</name>
+            <instance>strongbox</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.light</name>
         <version>2.0</version>
         <interface>
-            <name>IHealth</name>
+            <name>ILight</name>
             <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.memtrack</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMemtrack</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.neuralnetworks</name>
+        <version>1.0-1</version>
+        <interface>
+            <name>IDevice</name>
+            <regex-instance>.*</regex-instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -28,6 +196,30 @@
         <version>1.0</version>
         <interface>
             <name>INfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.nfc</name>
+        <version>1.1</version>
+        <interface>
+            <name>INfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.oemlock</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOemLock</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.power</name>
+        <version>1.0-3</version>
+        <interface>
+            <name>IPower</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -46,18 +238,175 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>android.hardware.radio</name>
+        <version>1.0-2</version>
+        <interface>
+            <name>IRadio</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+            <instance>slot3</instance>
+        </interface>
+        <interface>
+            <name>ISap</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.radio.config</name>
+        <version>1.0</version>
+        <interface>
+            <name>IRadioConfig</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.renderscript</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>android.hardware.secure_element</name>
         <version>1.0</version>
         <interface>
             <name>ISecureElement</name>
-            <instance>xiaomi-SIM1</instance>
-            <instance>xiaomi-SIM2</instance>
-            <instance>xiaomi-eSE1</instance>
+            <regex-instance>SIM[1-9][0-9]*</regex-instance>
+            <regex-instance>eSE[1-9][0-9]*</regex-instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.sensors</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISensors</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.soundtrigger</name>
+        <version>2.0-1</version>
+        <interface>
+            <name>ISoundTriggerHw</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.tetheroffload.config</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOffloadConfig</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.tetheroffload.control</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOffloadControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.thermal</name>
+        <version>1.0-1</version>
+        <interface>
+            <name>IThermal</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.tv.cec</name>
+        <version>1.0</version>
+        <interface>
+            <name>IHdmiCec</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.tv.input</name>
+        <version>1.0</version>
+        <interface>
+            <name>ITvInput</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.usb</name>
+        <version>1.0-1</version>
+        <interface>
+            <name>IUsb</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.usb.gadget</name>
+        <version>1.0</version>
+        <interface>
+            <name>IUsbGadget</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.vibrator</name>
+        <version>1.0-2</version>
+        <interface>
+            <name>IVibrator</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.vr</name>
+        <version>1.0</version>
+        <interface>
+            <name>IVr</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.weaver</name>
+        <version>1.0</version>
+        <interface>
+            <name>IWeaver</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.wifi</name>
+        <version>1.0-2</version>
+        <interface>
+            <name>IWifi</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.wifi.hostapd</name>
+        <version>1.0</version>
+        <interface>
+            <name>IHostapd</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.wifi.offload</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOffload</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.wifi.supplicant</name>
         <version>1.0</version>
+        <interface>
+            <name>ISupplicant</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.wifi.supplicant</name>
+        <version>1.0-1</version>
         <interface>
             <name>ISupplicant</name>
             <instance>default</instance>
@@ -117,7 +466,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>com.quicinc.cne.api</name>
-        <version>1.0-1</version>
+        <version>1.1</version>
         <interface>
             <name>IApiService</name>
             <instance>cnd</instance>
@@ -125,7 +474,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>com.quicinc.cne.server</name>
-        <version>2.0-2</version>
+        <version>2.2</version>
         <interface>
             <name>IServer</name>
             <instance>cnd</instance>
@@ -141,7 +490,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.display.config</name>
-        <version>1.0-3</version>
+        <version>1.0-4</version>
         <interface>
             <name>IDisplayConfig</name>
             <instance>default</instance>
@@ -155,7 +504,63 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true" >
+    <hal format="hidl" optional="true">
+        <name>vendor.insidesecure.vpnclientd</name>
+        <version>1.0</version>
+        <interface>
+            <name>ITransport</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.accessory</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAccessory</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.accessory.uevent</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAccessoryUevent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.aod.aodcommon</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAodCommon</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.aod.aodpower</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAodPower</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.aod.aodview</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAodView</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.battery</name>
+        <version>1.0</version>
+        <interface>
+            <name>IBattery</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.lge.hardware.biometrics.fingerprint</name>
         <version>2.1</version>
         <interface>
@@ -163,8 +568,229 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true" >
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.bootproperty</name>
+        <version>1.0</version>
+        <interface>
+            <name>IBootProperty</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.charger</name>
+        <version>1.0</version>
+        <interface>
+            <name>ICharger</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.configstore</name>
+        <version>1.0</version>
+        <interface>
+            <name>ICodecParserConfigs</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IConfigStore</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IGlobalConfigs</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IPowerConfigs</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.data</name>
+        <version>1.0</version>
+        <interface>
+            <name>IData</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.display.brightness</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDisplayBrightness</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.display.general</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDisplayGeneral</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.display.tune</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDisplayTune</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.display.uevent</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDisplayUevent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.fido</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILgeFido</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.fingertest</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFingerTest</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.ftmitem</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFtmitem</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.gnss</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILgeGnss</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.laop</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILgeLaop</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.lgatcmd</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILgAtCmd</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.lgmd</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILgmd</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.light</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILightEx</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.lpwg</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILpwg</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.msp</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMsp</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.mtv</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILgeMtv</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.nfc</name>
+        <version>1.1</version>
+        <interface>
+            <name>ILgeNfc_1_1</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.payment.giftcard</name>
+        <version>1.0</version>
+        <interface>
+            <name>IGiftcardDaemon</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.payment.mme</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMMENative</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.platform</name>
+        <version>1.0</version>
+        <interface>
+            <name>IPlatform</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.powercontrol</name>
+        <version>1.0</version>
+        <interface>
+            <name>IPowercontrol</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.powerhint.rescontrol</name>
+        <version>2.0</version>
+        <interface>
+            <name>IResControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.property</name>
+        <version>1.0</version>
+        <interface>
+            <name>IProperty</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.lge.hardware.radio</name>
+        <version>1.0</version>
         <version>1.1</version>
         <interface>
             <name>ILgeRadio</name>
@@ -178,7 +804,15 @@
             <instance>lge_radio_prop</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true" >
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.sdcardtray</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISDCardTray</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.lge.hardware.securefuse</name>
         <version>1.0</version>
         <interface>
@@ -186,7 +820,71 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true" >
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.sensors</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISensors</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.sensortest</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISensorTest</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.soi</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISoi</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.storageinfo</name>
+        <version>1.0</version>
+        <interface>
+            <name>IStorageInfo</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.thermal</name>
+        <version>1.0</version>
+        <interface>
+            <name>IThermal</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.touch</name>
+        <version>1.0</version>
+        <interface>
+            <name>ITouch</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.usb</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILgeUsb</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.usb.uevent</name>
+        <version>1.0</version>
+        <interface>
+            <name>IUsbUEvent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.lge.hardware.vibrator</name>
         <version>1.0</version>
         <interface>
@@ -194,7 +892,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true" >
+    <hal format="hidl" optional="true">
         <name>vendor.lge.hardware.vss_ims</name>
         <version>1.0</version>
         <interface>
@@ -202,43 +900,23 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <!--<hal format="hidl" optional="true" >
-        <name>vendor.lge.hardware.configstore</name>
+    <hal format="hidl" optional="true">
+        <name>vendor.lge.hardware.wifi.hal</name>
         <version>1.0</version>
         <interface>
-            <name>IConfigStore</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IGlobalConfigs</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IPowerConfigs</name>
-            <instance>default</instance>
-        </interface>
-    </hal>-->
-    <hal format="hidl" optional="true">
-        <name>vendor.lineage.livedisplay</name>
-        <version>2.0</version>
-        <interface>
-            <name>IDisplayModes</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IPictureAdjustment</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>ISunlightEnhancement</name>
+            <name>IWifiLgeHal</name>
             <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.lineage.trust</name>
+        <name>vendor.lge.hardware.wifi.hostapd</name>
         <version>1.0</version>
         <interface>
-            <name>IUsbRestrict</name>
+            <name>IHostapdCallback</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IHostapdEx</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -247,14 +925,6 @@
         <version>1.0</version>
         <interface>
             <name>INqNfc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.nxp.nxpnfc</name>
-        <version>1.0</version>
-        <interface>
-            <name>INxpNfc</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -442,30 +1112,10 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.scve.objecttracker</name>
+        <name>vendor.qti.hardware.sensorscalibrate</name>
         <version>1.0</version>
         <interface>
-            <name>IObjectTracker</name>
-            <instance>objectTracker</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.scve.panorama</name>
-        <version>1.0</version>
-        <interface>
-            <name>IPanoramaStitching</name>
-            <instance>panoStitching</instance>
-        </interface>
-        <interface>
-            <name>IPanoramaTracking</name>
-            <instance>panoTracking</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.soter</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISoter</name>
+            <name>ISensorsCalibrate</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -486,27 +1136,11 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.wifi.hostapd</name>
+        <name>vendor.qti.hardware.wifi.wifilearner</name>
         <version>1.0</version>
         <interface>
-            <name>IHostapdVendor</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.wifi.keystore</name>
-        <version>1.0</version>
-        <interface>
-            <name>IKeystoreExt</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.wifi.supplicant</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISupplicantVendor</name>
-            <instance>default</instance>
+            <name>IWifiStats</name>
+            <instance>wifiStats</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -522,6 +1156,14 @@
         <version>1.0</version>
         <interface>
             <name>ISuppTunnelProvider</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.wipower</name>
+        <version>1.0</version>
+        <interface>
+            <name>IWipower</name>
             <instance>default</instance>
         </interface>
     </hal>

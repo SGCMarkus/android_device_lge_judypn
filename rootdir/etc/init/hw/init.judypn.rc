@@ -8,6 +8,7 @@ import /vendor/etc/init/hw/init.lge.usb.rc
 import /vendor/etc/init/hw/init.lge.usb.configfs.rc
 import /vendor/etc/init/hw/init.lge.power.rc
 import /vendor/etc/init/hw/init.lge.sensors.rc
+import /vendor/etc/init/hw/init.lge.fingerprints.rc
 
 # import zram configurations
 import /init.lge.svelte.rc
@@ -27,7 +28,7 @@ on boot
     chmod 664  /sys/class/lge_mme/mme_ctrl/mme_command
     chown system system  /sys/class/lge_mme/mme_ctrl/hw_test_value
     chmod 664  /sys/class/lge_mme/mme_ctrl/hw_test_value
-    # END MME diver
+   # END MME diver
 
     # Begin Display General Features
     chown system system /sys/class/panel/freeze_state_hal
@@ -50,6 +51,8 @@ on boot
     # Begin Display Aod Features
     chown system system /sys/class/panel/aod/area
     chmod 664 /sys/class/panel/aod/area
+    chown system system /sys/class/panel/aod/power_mode
+    chmod 664 /sys/class/panel/aod/power_mode
     # End Display Aod Features
 
     # Begin Img Tune Features
@@ -86,11 +89,6 @@ on boot
     # End Display Factory Features
 
     # End Display Driver
-
-    # BootProperty Features
-    chown system system /mnt/vendor/persist-lg/property/persist.sys.lg.sound_enable
-    chown system system /mnt/vendor/persist-lg/property/persist.sys.lg.fota_silent
-    # End BootProperty Features
 
 # Begin Immersion Changes
 service immvibed /vendor/bin/immvibed -p 99 -u 1000

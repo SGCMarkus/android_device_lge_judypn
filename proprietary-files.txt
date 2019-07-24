@@ -14,23 +14,22 @@ vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/libAutoContrast.so
 vendor/lib/libSJVideoNR.so
 vendor/lib/libarcsoft_beauty_picselfie.so
-vendor/lib/libarcsoft_dpportraitsegment.so
 vendor/lib/libarcsoft_dualcam_portraitlighting.so
-vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_dualcam_refocus_front.so
 vendor/lib/libarcsoft_dualcam_refocus_rear_t.so
-vendor/lib/libarcsoft_dualcam_verification.so
-vendor/lib/libarcsoft_dualcam_verification_front.so
+vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_makeup.so
 vendor/lib/libarcsoft_picselfie_algorithm.so
 vendor/lib/libbwfocuspeaking.so
+vendor/lib/libcamxfdalgov7.so
+vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
+vendor/lib/libcamxtintlessalgo.so
 vendor/lib/libcinemaeffect.so
 vendor/lib/libfilm_emulation.so
 vendor/lib/libfilm_emulation_symphony.so
 vendor/lib/liblgdnn.so
 vendor/lib/liblghdri.so
-vendor/lib/liblgmbms.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmorpho_image_stab31.so
@@ -38,10 +37,7 @@ vendor/lib/libmorpho_superzoom.so
 vendor/lib/libmpbase.so
 vendor/lib/libCmcPdaf.so
 vendor/lib/libCmcPdaf_tele.so
-vendor/lib/libcalibverify.so
-vendor/lib/libcalibverifyW_T.so
 vendor/lib64/liblgdnn.so
-vendor/lib64/liblgmbms.so
 vendor/lib64/libmmcamera_faceproc.so
 vendor/lib64/libmmcamera_faceproc2.so
 
@@ -50,22 +46,6 @@ vendor/lib/camera/fdconfigpreview.bin
 vendor/lib/camera/fdconfigpreviewlite.bin
 vendor/lib/camera/fdconfigvideo.bin
 vendor/lib/camera/fdconfigvideolite.bin
-vendor/lib/camera/liblg_aec_param_imx351_binning_preview.so
-vendor/lib/camera/liblg_aec_param_imx351_binning_video.so
-vendor/lib/camera/liblg_aec_param_imx351_cine_video.so
-vendor/lib/camera/liblg_aec_param_imx351_hfr_120.so
-vendor/lib/camera/liblg_aec_param_imx351_hfr_240.so
-vendor/lib/camera/liblg_aec_param_imx351_hfr_60.so
-vendor/lib/camera/liblg_aec_param_imx351_hfr_90.so
-vendor/lib/camera/liblg_aec_param_imx351_out_focus.so
-vendor/lib/camera/liblg_aec_param_imx351_panorama.so
-vendor/lib/camera/liblg_aec_param_imx351_preview.so
-vendor/lib/camera/liblg_aec_param_imx351_sensor_hdr_auto_preview.so
-vendor/lib/camera/liblg_aec_param_imx351_sensor_hdr_auto_video.so
-vendor/lib/camera/liblg_aec_param_imx351_sensor_hdr_on_preview.so
-vendor/lib/camera/liblg_aec_param_imx351_sensor_hdr_on_video.so
-vendor/lib/camera/liblg_aec_param_imx351_uhfr_60.so
-vendor/lib/camera/liblg_aec_param_imx351_video.so
 vendor/lib/camera/liblg_aec_param_imx351w_binning_preview.so
 vendor/lib/camera/liblg_aec_param_imx351w_binning_video.so
 vendor/lib/camera/liblg_aec_param_imx351w_cine_video.so
@@ -157,15 +137,12 @@ vendor/lib/liblgawb_main.so
 vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/lib.com.lge.elvis.so
 vendor/lib/libSRIyuv.so
-vendor/lib/libcamxfdengine.so
-vendor/lib/libcamxfdalgov7.so
-vendor/lib/libgnustl_shared.so
 vendor/lib/lib_wdr2.so
 vendor/lib/liblgsnpeawb.so
 vendor/lib/libSNPE.so
-vendor/lib/libdeepportrait.so
-vendor/lib64/liblgae_main.so
+vendor/lib/libc++_shared_snpe.so
 vendor/lib64/liblgawb_main.so
+vendor/lib64/libc++_shared_snpe.so
 
 # Camera - components
 vendor/lib/camera/components/com.lge.node.camerasolution.so
@@ -236,19 +213,15 @@ vendor/lib/camera/com.qti.tuned.imx351.bin
 vendor/lib/camera/com.qti.tuned.imx363.bin
 vendor/lib/camera/com.qti.tuned.s5k3m5.bin
 vendor/lib/camera/com.qti.tuned.sl556.bin
-vendor/lib/camera/com.qti.tuned.sl556_global.bin
 vendor/lib/camera/com.qti.tuned.sl556_tmus.bin
 vendor/lib/camera/com.qti.tuned.sl846.bin
-vendor/lib/camera/com.qti.tuned.sl846_global.bin
 vendor/lib/camera/com.qti.tuned.sl846_tmus.bin
 vendor/lib64/camera/com.qti.tuned.imx351.bin
 vendor/lib64/camera/com.qti.tuned.imx363.bin
 vendor/lib64/camera/com.qti.tuned.s5k3m5.bin
 vendor/lib64/camera/com.qti.tuned.sl556.bin
-vendor/lib64/camera/com.qti.tuned.sl556_global.bin
 vendor/lib64/camera/com.qti.tuned.sl556_tmus.bin
 vendor/lib64/camera/com.qti.tuned.sl846.bin
-vendor/lib64/camera/com.qti.tuned.sl846_global.bin
 vendor/lib64/camera/com.qti.tuned.sl846_tmus.bin
 
 # Configstore
@@ -294,8 +267,12 @@ vendor/lib/libtzdrmgenprov.so
 
 # DSP
 vendor/bin/chre
+vendor/lib/libfastcrc.so
+vendor/lib/libfastcvdsp_stub.so
 vendor/lib/libsymphony-1.1.4.so
+vendor/lib/libsymphony-cpu.so
 vendor/lib/libsymphonypower-1.1.4.so
+vendor/lib/libsymphonypower.so
 vendor/lib/rfsa/adsp/activity.so
 vendor/lib/rfsa/adsp/AlacDecoderModule.so.1
 vendor/lib/rfsa/adsp/ApeDecoderModule.so.1
@@ -314,20 +291,24 @@ vendor/lib/rfsa/adsp/EtsiEaacPlusEncAndCmnModule.so.1
 vendor/lib/rfsa/adsp/fastrpc_shell_0
 vendor/lib/rfsa/adsp/FlacDecoderModule.so.1
 vendor/lib/rfsa/adsp/fluence_voiceplus_module.so.1
+vendor/lib/rfsa/adsp/geofence.so
 vendor/lib/rfsa/adsp/HeaacDecoderModule.so.1
 vendor/lib/rfsa/adsp/LdacModule.so.1
+vendor/lib/rfsa/adsp/lg_nanoapp_pa.so
+vendor/lib/rfsa/adsp/lg_nanoapp_sbd.so
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
-vendor/lib/rfsa/adsp/libarcsoft_dualcam_refocus_skel.so
 vendor/lib/rfsa/adsp/libchre_slpi_skel.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
-vendor/lib/rfsa/adsp/libexternal_dog_skel.so
+vendor/lib/rfsa/adsp/libdsp_streamer_add_constant.so
+vendor/lib/rfsa/adsp/libdsp_streamer_binning.so
+vendor/lib/rfsa/adsp/libdsp_streamer_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvdsp_skel.so
-vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_skel.so
 vendor/lib/rfsa/adsp/libhexagon_nn_skel.so
-vendor/lib/rfsa/adsp/libhvxMathVIO.so
 vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
+vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
+vendor/lib/rfsa/adsp/libsns_device_mode_skel.so
 vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so
 vendor/lib/rfsa/adsp/libstabilitydomain_skel.so
 vendor/lib/rfsa/adsp/libsysmondomain_skel.so
@@ -342,30 +323,31 @@ vendor/lib/rfsa/adsp/VoiceWakeup_V2_Module.so.1
 vendor/lib/rfsa/adsp/VorbisDecoderModule.so.1
 vendor/lib/rfsa/adsp/WmaProDecoderModule.so.1
 vendor/lib/rfsa/adsp/WmaStdDecoderModule.so.1
-vendor/lib64/libsymphonypower-1.1.4.so
+vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libsymphony-1.1.4.so
+vendor/lib64/libsymphony-cpu.so
+vendor/lib64/libsymphonypower-1.1.4.so
+vendor/lib64/libsymphonypower.so
 
 # Fingerprint
-#vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
-#vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc|a60eddac544ea668be98117dfbaad40de301cd56
+vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
+vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/lib64/hw/fingerprint.sdm845.so
-#vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1_vendor.so
-#vendor/lib64/libgf_hal.so
-#vendor/lib64/libgf_ca.so
-#vendor/lib64/libgf_algo.so
+vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so
+vendor/lib64/libgf_hal.so
+vendor/lib64/libgf_algo.so
 vendor/lib/hw/fingerprint.sdm845.so
-#vendor/lib/libgf_hal.so
-#vendor/lib/libgf_ca.so
-#vendor/lib/libgf_algo.so
+vendor/lib/libgf_hal.so
+vendor/lib/libgf_algo.so
+vendor/usr/idc/goodix_fp_key.idc
+vendor/usr/keylayout/goodix_fp_key.kl
 
 # Firmware (Audio)
 vendor/firmware/Tfa9872.cnt
 vendor/firmware/Tfa9872_ras.cnt
 
 # Firmware (Bluetooth)
-vendor/firmware/crbtfw20.tlv
 vendor/firmware/crbtfw21.tlv
-vendor/firmware/crnv20.bin
 vendor/firmware/crnv21.bin
 
 # Firmware (Camera)
@@ -427,30 +409,23 @@ vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 
 # HotwordEnrollment
--priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
--priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
+-product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk:priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
+-product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk:priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
 
 # Keystore
 vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
+vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
 vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc
 vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
+vendor/lib64/libqtikeymaster4.so
 vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so
 vendor/lib/libkeymasterdeviceutils.so
 vendor/lib/libkeymasterprovision.so
 vendor/lib/libkeymasterutils.so
-
-# Light
-#lib64/lib64/android.hardware.light@2.0.so
-#lib/lib64/android.hardware.light@2.0.so
-#vendor/bin/hw/android.hardware.light@2.0-service
-#vendor/etc/init/android.hardware.light@2.0-service.rc
-#vendor/lib64/hw/android.hardware.light@2.0-impl.so
-#vendor/lib64/hw/lights.sdm845.so
-#vendor/lib/hw/android.hardware.light@2.0-impl.so
-#vendor/lib/hw/lights.sdm845.so
+vendor/lib/libqtikeymaster4.so
 
 # Peripheral manager
 vendor/bin/pm-proxy
@@ -461,50 +436,79 @@ vendor/lib/libperipheral_client.so
 vendor/lib/libspcom.so
 
 # QDCM calibration data
-vendor/etc/qdcm_calib_data_SW43406_cmd_mode_dsc_dsi_panel.xml
+vendor/etc/qdcm_calib_data_Dual_nt35597_video_mode_dsi_truly_panel_without_DSC.xml
+vendor/etc/qdcm_calib_data_nt35597_cmd_mode_dsi_truly_panel_with_DSC.xml
+vendor/etc/qdcm_calib_data_nt35597_video_mode_dsi_truly_panel_with_DSC.xml
+vendor/etc/qdcm_calib_data_Sharp_4k_cmd_mode_dsc_dsi_panel.xml
 vendor/etc/qdcm_calib_data_SW43408A_cmd_mode_dsc_dsi_panel.xml
 
 # SCVE
+vendor/lib64/libscveBlobDescriptor.so
+vendor/lib64/libscveBlobDescriptor_stub.so
+vendor/lib64/libscveCommon.so
+vendor/lib64/libscveCommon_stub.so
 vendor/lib64/libscveFaceLandmarks.so
 vendor/lib64/libscveFaceRecognition.so
+vendor/lib64/libscveObjectSegmentation.so
+vendor/lib64/libscveObjectSegmentation_stub.so
+vendor/lib64/libscveObjectTracker.so
+vendor/lib64/libscveObjectTracker_stub.so
+vendor/lib64/libscvePanorama_lite.so
+vendor/lib64/libscvePanorama.so
+vendor/lib64/libscveScan3D.so
+vendor/lib64/vendor.qti.hardware.scve.objecttracker@1.0.so
+vendor/lib64/vendor.qti.hardware.scve.panorama@1.0.so
+vendor/lib/libscveBlobDescriptor.so
+vendor/lib/libscveBlobDescriptor_stub.so
+vendor/lib/libscveCommon.so
+vendor/lib/libscveCommon_stub.so
 vendor/lib/libscveFaceLandmarks.so
 vendor/lib/libscveFaceRecognition.so
+vendor/lib/libscveObjectSegmentation.so
+vendor/lib/libscveObjectSegmentation_stub.so
+vendor/lib/libscveObjectTracker.so
+vendor/lib/libscveObjectTracker_stub.so
+vendor/lib/libscvePanorama_lite.so
+vendor/lib/libscvePanorama.so
+vendor/lib/libscveScan3D.so
+vendor/lib/vendor.qti.hardware.scve.objecttracker@1.0.so
+vendor/lib/vendor.qti.hardware.scve.panorama@1.0.so
 
 # Sensors
-vendor/bin/sensors.qcom
-#vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
-#vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
-#vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
-#vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
-vendor/lib64/libsensorcal.so
-vendor/lib64/libsensorslog.so
-vendor/lib64/libssc.so
-vendor/lib64/libssc_default_listener.so
-#vendor/lib64/libsnsapi.so
-#vendor/lib64/libsns_fastRPC_util.so
-vendor/lib64/libsns_low_lat_stream_stub.so
-vendor/lib64/libsnsdiaglog.so
-vendor/lib64/sensors.ssc.so
-vendor/lib64/sensors.sar.so
-#vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
-#vendor/lib/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
+vendor/bin/sensors.qti
+vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
+vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
+vendor/lib/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
 vendor/lib/libsensorcal.so
 vendor/lib/libsensorslog.so
+vendor/lib/libsns_device_mode_stub.so
+vendor/lib/libsns_fastRPC_util.so
+vendor/lib/libsns_low_lat_stream_stub.so
+vendor/lib/libsnsapi.so
+vendor/lib/libsnsdiaglog.so
 vendor/lib/libssc.so
 vendor/lib/libssc_default_listener.so
-#vendor/lib/libsnsapi.so
-#vendor/lib/libsns_fastRPC_util.so
-vendor/lib/libsns_low_lat_stream_stub.so
-vendor/lib/libsnsdiaglog.so
-vendor/lib/sensors.ssc.so
 vendor/lib/sensors.sar.so
-#vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
+vendor/lib/sensors.ssc.so
+vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
+vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
+vendor/lib64/libsensorcal.so
+vendor/lib64/libsensorslog.so
+vendor/lib64/libsns_device_mode_stub.so
+vendor/lib64/libsns_fastRPC_util.so
+vendor/lib64/libsns_low_lat_stream_stub.so
+vendor/lib64/libsnsapi.so
+vendor/lib64/libsnsdiaglog.so
+vendor/lib64/libssc.so
+vendor/lib64/libssc_default_listener.so
+vendor/lib64/sensors.sar.so
+vendor/lib64/sensors.ssc.so
+vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
 # Sensors configs
 vendor/etc/sensors/hals.conf
 vendor/etc/sensors/registry/config/ak991x_dri_0.json
 vendor/etc/sensors/registry/config/apds9160_0.json
-vendor/etc/sensors/registry/config/etc_version
 vendor/etc/sensors/registry/config/icm4x6xx_0.json
 vendor/etc/sensors/registry/config/sdm845_ak991x_0.json
 vendor/etc/sensors/registry/config/sdm845_ak991x_0_rev1_0.json
@@ -520,6 +524,8 @@ vendor/etc/sensors/registry/config/sdm845_spl06_0.json
 vendor/etc/sensors/registry/config/sdm845_tmd3727.json
 vendor/etc/sensors/registry/config/sensors_list.txt
 vendor/etc/sensors/registry/config/sns_amd.json
+vendor/etc/sensors/registry/config/sns_amd_sw_disabled.json
+vendor/etc/sensors/registry/config/sns_amd_sw_enabled.json
 vendor/etc/sensors/registry/config/sns_basic_gestures.json
 vendor/etc/sensors/registry/config/sns_bring_to_ear.json
 vendor/etc/sensors/registry/config/sns_cm.json
@@ -540,11 +546,16 @@ vendor/etc/sensors/registry/config/sns_rmd.json
 vendor/etc/sensors/registry/config/sns_rotv.json
 vendor/etc/sensors/registry/config/sns_smd.json
 vendor/etc/sensors/registry/config/sns_tilt.json
+vendor/etc/sensors/registry/config/sns_tilt_sw_disabled.json
+vendor/etc/sensors/registry/config/sns_tilt_sw_enabled.json
 vendor/etc/sensors/registry/config/sns_tilt_to_wake.json
 vendor/etc/sensors/registry/config/sns_window_orientation.json
 vendor/etc/sensors/registry/config/spl06_0.json
 vendor/etc/sensors/registry/config/tmd3727.json
+vendor/etc/sensors/registry/registry/sensors_registry
 vendor/etc/sensors/registry/registry/sensors_settings
+vendor/etc/sensors/registry/sns_reg_config
+vendor/etc/sensors/sns_reg_config
 
 # Thermal engine
 vendor/bin/thermal-engine
