@@ -61,7 +61,7 @@ on init
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
 on post-fs
-    start vendor.loggy
+    #start vendor.loggy
     chmod 0755 /sys/kernel/debug/tracing
 
 on early-boot
@@ -94,6 +94,8 @@ on early-boot
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
 on boot
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/restart_framework.sh
+    
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
@@ -146,6 +148,10 @@ on boot
 
     #Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
+
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
 
     setprop wifi.interface wlan0
 
