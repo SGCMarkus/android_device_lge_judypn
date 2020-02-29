@@ -49,7 +49,7 @@ while [ "$1" != "" ]; do
 done
 
 if [ -z "$SRC" ]; then
-    SRC=/home/markus/ssd_home/V405EBW20a/system
+    SRC=/home/markus/V40/V405EBW_20e/system
 fi
 
 # Initialize the helper

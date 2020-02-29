@@ -283,6 +283,7 @@ vendor/lib/vendor.lge.hardware.lgatcmd@1.0.so
 # DRM
 vendor/bin/qseecomd
 vendor/bin/seemp_healthd
+vendor/etc/init/qseecomd.rc|9b6f7a407d49a5a0e6144a022273e8f46fc76b6a
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
 vendor/lib64/libGPreqcancel.so
@@ -376,6 +377,7 @@ vendor/lib64/libsymphonypower.so
 # Fingerprint
 vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
 vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
+vendor/etc/vintf/manifest/vendor.lge.hardware.biometrics.fingerprint@2.1.xml|816c77f3c8da034a6767acfb008766234d0d7553
 vendor/lib64/hw/fingerprint.sdm845.so
 vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
