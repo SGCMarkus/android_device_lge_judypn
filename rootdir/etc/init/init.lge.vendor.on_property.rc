@@ -9,12 +9,6 @@ on property:ro.vendor.lge.build.target_operator=KT
    write /proc/sys/net/ipv4/tcp_congestion_control cubic
 
 #######################################################
-# LGP_DATA_TCPIP_MPTCP_GLOBAL_SET
-#######################################################
-on property:ro.vendor.lge.build.target_country=ESA
-   write /proc/sys/net/ipv4/tcp_congestion_control cubic
-
-#######################################################
 # LGE_CHANGE_S, [display] feature : SP MIRRORING
 #######################################################
 on property:vendor.lge.wfd.spmirroring.backlight=0
@@ -30,3 +24,10 @@ on property:vendor.lge.wfd.spmirroring.backlight=1
 ########################################
 on property:sys.boot_completed=1
     setprop vendor.lge.boot_completed 1
+
+######################################################
+# Trigger kernel crash when kernel moudle is not found
+######################################################
+on property:sys.boot_completed=1 && property:vendor.lge.trigger_crash_after_boot=1
+    setprop vendor.lge.trigger_crash_after_boot 0
+    write /proc/sysrq-trigger "c"

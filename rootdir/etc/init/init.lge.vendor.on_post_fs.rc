@@ -5,9 +5,12 @@ on post-fs
     mkdir /vendor/persist-lg/tmo 0771 radio radio
     #For U+ call-frw
     mkdir /mnt/vendor/persist-lg/callfw 0770 radio radio
-    #For LGKM default key storage
-    mkdir /mnt/vendor/persist-lg/kmstore 0770 system system
-    mkdir /vendor/persist-lg/keymaster 0770 system system
+    mkdir /mnt/vendor/persist-lg/keymaster 0770 system system
+    chown root system /mnt/vendor/persist-lg
+    chmod 0771 /mnt/vendor/persist-lg
+    restorecon_recursive /mnt/vendor/persist-lg
+    mkdir /mnt/vendor/persist-lg/data 0700 system system
+    restorecon_recursive /mnt/vendor/persist-lg/data
 
     #USE_SECUREBOOT
     verity_update_state

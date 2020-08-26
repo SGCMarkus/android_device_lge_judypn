@@ -1,29 +1,15 @@
 # This file is imported by init.{ro.hardware}.rc
 
+# import zram configurations
+import /init.lge.svelte.rc
+
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-
+    wait /dev/block/bootdevice
     mount_all /vendor/etc/fstab.${ro.hardware}
 
-    mkdir /persist/data 0700 system system
-    mkdir /persist/display 0770 system graphics
-    mkdir /persist/rfs 0770 root system
-    mkdir /persist/hlos_rfs 0770 root system
-    chmod 0770 /persist/rfs
-    chmod 0770 /persist/rfs/shared
-    chmod 0770 /persist/rfs/msm
-    chmod 0770 /persist/rfs/msm/adsp
-    chmod 0770 /persist/rfs/msm/mpss
-    chmod 0770 /persist/rfs/msm/slpi
-    chmod 0770 /persist/rfs/mdm
-    chmod 0770 /persist/rfs/mdm/adsp
-    chmod 0770 /persist/rfs/mdm/mpss
-    chmod 0770 /persist/rfs/mdm/slpi
-    chmod 0770 /persist/rfs/mdm/tn
-    chmod 0770 /persist/rfs/apq
-    chmod 0770 /persist/rfs/apq/gnss
-    chmod 0770 /persist/hlos_rfs
+	exec_background /vendor/bin/test_stuff.sh
 
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
@@ -50,9 +36,13 @@ on fs
     chmod 0771 /mnt/vendor/eri
     restorecon_recursive /mnt/vendor/eri
 
+    chown system system /proc/reclaim_pid
+
     # We use reservedsize option in fstab instead of tune2fs. No more use tune2fs
     # Executing tune2fs to reserve some region in /data.(40MB)
     # exec /system/bin/tune2fs -u system -r 10240 /dev/block/bootdevice/by-name/userdata
+on late-fs
+    #mount_all /vendor/etc/fstab.${ro.hardware} --late
 
 on post-fs
     chown system system /vendor/mpt
@@ -67,30 +57,15 @@ on post-fs
     chown system system /vendor/fota
     chmod 0755 /vendor/fota
 
-    chown root system /mnt/vendor/persist-lg/.sreadahead
-    chmod 0770 /mnt/vendor/persist-lg/.sreadahead
-
-    chown root system /mnt/vendor/persist-lg/.sreadahead/.sreadahead_done
-    chmod 0660 /mnt/vendor/persist-lg/.sreadahead/.sreadahead_done
-
-    chown root system /mnt/vendor/persist-lg/.sreadahead/.readahead_list.txt
-    chmod 0660 /mnt/vendor/persist-lg/.sreadahead/.readahead_list.txt
-
     chown root system /sys/module/lge_handle_panic/parameters/gen_adsp_panic
     chown root system /sys/module/lge_handle_panic/parameters/gen_bug
     chown root system /sys/module/lge_handle_panic/parameters/gen_cdsp_panic
-    chown root system /sys/module/lge_handle_panic/parameters/gen_mba_panic
     chown root system /sys/module/lge_handle_panic/parameters/gen_modem_panic
     chown root system /sys/module/lge_handle_panic/parameters/gen_panic
-    chown root system /sys/module/lge_handle_panic/parameters/gen_sec_wdt_bite
-    chown root system /sys/module/lge_handle_panic/parameters/gen_sec_wdt_scm
     chown root system /sys/module/lge_handle_panic/parameters/gen_slpi_panic
     chown root system /sys/module/lge_handle_panic/parameters/gen_venus_panic
-    chown root system /sys/module/lge_handle_panic/parameters/gen_wcnss_panic
     chown root system /sys/module/lge_handle_panic/parameters/gen_wdt_bark
     chown root system /sys/module/lge_handle_panic/parameters/gen_wdt_bite
-
-    start sreadahead
 
 # enable & disable crash handler, rtb & trace event through property
 on property:persist.vendor.lge.service.crash.enable=*
@@ -99,19 +74,6 @@ on property:persist.vendor.lge.service.crash.enable=*
 service service-crash /vendor/bin/init.sdm845.crash.sh
     disabled
     oneshot
-
-service sreadahead /vendor/bin/treadahead
-    oneshot
-    disabled
-    seclabel u:r:sreadahead:s0
-
-# make a diecision whether sreadahead would be performed or not.
-service sreadahead-check /vendor/bin/sreadahead_check
-    class main
-    user root
-    group root system
-    oneshot
-    seclabel u:r:sreadahead-check:s0
 
 on property:persist.vendor.lge.service.crash.enable=1
     start console
@@ -165,8 +127,10 @@ on property:persist.vendor.lge.service.crash.enable=0
     # ftrace
     write /sys/kernel/debug/tracing/tracing_on 0
 
+# it takes to execute free_buffer over 100ms. moved after boot completed
+on property:sys.boot_completed=1 && property:persist.vendor.lge.service.crash.enable=0
     # size
     write /sys/kernel/debug/tracing/buffer_size_kb 0
 
     # free buffer
-    #write /sys/kernel/debug/tracing/free_buffer
+    write /sys/kernel/debug/tracing/free_buffer 1

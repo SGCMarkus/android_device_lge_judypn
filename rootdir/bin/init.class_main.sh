@@ -1,6 +1,6 @@
 #! /vendor/bin/sh
 
-# Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2014, 2019 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -41,12 +41,6 @@ case "$baseband" in
     stop ril-daemon
     stop vendor.ril-daemon
     stop vendor.qcrild
-    start vendor.ipacm
-esac
-
-case "$baseband" in
-    "msm" | "csfb" | "svlte2a" | "mdm" | "mdm2" | "sglte" | "sglte2" | "dsda2" | "unknown" | "dsda3")
-    start vendor.qmuxd
 esac
 
 case "$baseband" in
@@ -94,14 +88,13 @@ case "$baseband" in
         # This is possible with vanilla aosp system image.
         stop ril-daemon
         stop vendor.ril-daemon
+
         start vendor.qcrild
     else
         start ril-daemon
         start vendor.ril-daemon
     fi
 
-    start vendor.ipacm-diag
-    start vendor.ipacm
     case "$baseband" in
         "svlte2a" | "csfb")
           start qmiproxy
@@ -116,15 +109,14 @@ case "$baseband" in
     esac
 
     multisim=`getprop persist.radio.multisim.config`
-    multisim_vts=`getprop ro.boot.vendor.lge.dsds`
 
-    if [ "$multisim" = "dsds" ] || [ "$multisim" = "dsda" ] || [ "$multisim_vts" = "dsds" ]; then
+    if [ "$multisim" = "dsds" ] || [ "$multisim" = "dsda" ]; then
         if [ "$qcrild_status" = "true" ]; then
           start vendor.qcrild2
         else
           start vendor.ril-daemon2
         fi
-    elif [ "$multisim" = "tsts" ] || [ "$multisim_vts" = "tsts" ]; then
+    elif [ "$multisim" = "tsts" ]; then
         if [ "$qcrild_status" = "true" ]; then
           start vendor.qcrild2
           start vendor.qcrild3
@@ -138,16 +130,12 @@ case "$baseband" in
         "tethered")
             start vendor.dataqti
             start vendor.dataadpl
-            start vendor.port-bridge
             ;;
         "concurrent")
             start vendor.dataqti
             start vendor.dataadpl
-            start vendor.netmgrd
-            start vendor.port-bridge
             ;;
         *)
-            start vendor.netmgrd
             ;;
     esac
 esac

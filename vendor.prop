@@ -12,4 +12,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.lge.build.target_country=COM \
     ro.vendor.lge.build.target_operator=LAO \
     ro.vendor.lge.capp_cupss.rootdir=/oem/OP \
-    ro.vendor.lge.swversion=V40520e
+    ro.vendor.lge.swversion=V409N30b

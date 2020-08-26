@@ -1,7 +1,7 @@
 on boot
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
-    # LGP_DATA
+    # LGP_DATA_PERFORMANCE_HELPING_CODE, y01.jeong@lge.com
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
 
@@ -41,6 +41,16 @@ on boot
 	chmod 664 /sys/devices/virtual/input/lge_touch/app_data
 	chown system system /sys/devices/virtual/input/lge_touch/film_status
 	chmod 664 /sys/devices/virtual/input/lge_touch/film_status
+	chown system system /sys/devices/virtual/input/lge_touch/active_pen_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/active_pen_status
+	chown system system /sys/devices/virtual/input/lge_touch/aes_mode
+	chmod 666 /sys/devices/virtual/input/lge_touch/aes_mode
+	chown system system /sys/module/usbhid/parameters/aes_mode
+	chmod 666 /sys/module/usbhid/parameters/aes_mode
+	chown system system /sys/devices/virtual/input/lge_touch/ds_update_state
+	chmod 666 /sys/devices/virtual/input/lge_touch/ds_update_state
+	chown system system /sys/devices/virtual/input/lge_touch/touch_dex_mode
+	chmod 664 /sys/devices/virtual/input/lge_touch/touch_dex_mode
 # END touch_driver
 
 # START touch_knock_on
@@ -60,6 +70,10 @@ on boot
 	chmod 664 /sys/devices/virtual/input/lge_touch/voice_button
 	chown system system /sys/devices/virtual/input/lge_touch/ai_pick
 	chmod 664 /sys/devices/virtual/input/lge_touch/ai_pick
+	chown system system /sys/devices/virtual/input/lge_touch/longpress
+	chmod 664 /sys/devices/virtual/input/lge_touch/longpress
+	chown system system /sys/devices/virtual/input/lge_touch/onetap
+	chmod 664 /sys/devices/virtual/input/lge_touch/onetap
 # END touch_knock_on
 
 # Start secure_touch

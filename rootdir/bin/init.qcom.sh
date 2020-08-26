@@ -84,7 +84,7 @@ start_msm_irqbalance_8939()
 {
 	if [ -f /vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "239" | "293" | "294" | "295" | "304" | "338" | "313" |"353")
+		    "239" | "293" | "294" | "295" | "304" | "338" | "313" | "353" | "354")
 			start vendor.msm_irqbalance;;
 		    "349" | "350" )
 			start vendor.msm_irqbal_lb;;
@@ -99,11 +99,32 @@ start_msm_irqbalance_msmnile()
          fi
 }
 
+start_msm_irqbalance_kona()
+{
+         if [ -f /vendor/bin/msm_irqbalance ]; then
+                start vendor.msm_irqbalance
+         fi
+}
+
+start_msm_irqbalance_lito()
+{
+         if [ -f /vendor/bin/msm_irqbalance ]; then
+                start vendor.msm_irqbalance
+         fi
+}
+
+start_msm_irqbalance_atoll()
+{
+         if [ -f /vendor/bin/msm_irqbalance ]; then
+                start vendor.msm_irqbalance
+         fi
+}
+
 start_msm_irqbalance660()
 {
 	if [ -f /vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "317" | "324" | "325" | "326" | "345" | "346")
+		    "317" | "321" | "324" | "325" | "326" | "336" | "345" | "346" | "360" | "393")
 			start vendor.msm_irqbalance;;
 		    "318" | "327" | "385")
 			start vendor.msm_irqbl_sdm630;;
@@ -114,7 +135,7 @@ start_msm_irqbalance660()
 start_msm_irqbalance()
 {
 	if [ -f /vendor/bin/msm_irqbalance ]; then
-		start vendor.msm_irqbalance
+			start vendor.msm_irqbalance
 	fi
 }
 
@@ -197,7 +218,7 @@ case "$target" in
         fi
 
         case "$soc_id" in
-             "317" | "324" | "325" | "326" | "318" | "327" | "385" )
+             "317" | "324" | "325" | "326" | "318" | "327" )
                   case "$hw_platform" in
                        "Surf")
                                     setprop qemu.hw.mainkeys 0
@@ -267,7 +288,7 @@ case "$target" in
                   ;;
         esac
         ;;
-    "msm8994" | "msm8992" | "msm8998" | "apq8098_latv" | "sdm845" | "sdm710" | "qcs605" | "talos")
+    "msm8994" | "msm8992" | "msm8998" | "apq8098_latv" | "sdm845" | "sdm710" | "qcs605" | "sm6150" | "trinket" | "bengal")
         start_msm_irqbalance
         ;;
     "msm8996")
@@ -296,6 +317,15 @@ case "$target" in
         ;;
     "msmnile")
         start_msm_irqbalance_msmnile
+        ;;
+    "kona")
+        start_msm_irqbalance_kona
+        ;;
+    "lito")
+        start_msm_irqbalance_lito
+        ;;
+    "atoll")
+        start_msm_irqbalance_atoll
         ;;
     "msm8937")
         start_msm_irqbalance_8939
@@ -414,7 +444,7 @@ sku_carrier=`getprop ro.boot.vendor.lge.sku_carrier`
 target_country=`getprop ro.vendor.lge.build.target_country`
 target_operator=`getprop ro.vendor.lge.build.target_operator`
 
-if [ "$build_product" == "judyp" ] || [ "$build_product" == "judypn" ] || [ "$build_product" == "judyln" ] || [ "$build_product" == "beta" ]; then
+if [ "$build_product" == "judyp" ] || [ "$build_product" == "judypn" ] || [ "$build_product" == "judyln" ] || [ "$build_product" == "beta" ] || [ "$build_product" == "style3lm" ]; then
     # add W for group recursively before delete
     chmod g+w -R /data/vendor/modem_config/*
     rm -rf /data/vendor/modem_config/*
@@ -544,6 +574,9 @@ if [ "$build_product" == "judyp" ] || [ "$build_product" == "judypn" ] || [ "$bu
     elif [ "$product_name" = "judyln_vzw" ]; then
         cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/neo_vzw.dig /data/vendor/modem_config/mcfg_sw/mbn_sw.dig
         cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/neo_vzw.txt /data/vendor/modem_config/mcfg_sw/mbn_sw.txt
+    elif [ "$product_name" = "style3lm_dcm_jp" ]; then
+        cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/stl3_dcm.dig /data/vendor/modem_config/mcfg_sw/mbn_sw.dig
+        cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/stl3_dcm.txt /data/vendor/modem_config/mcfg_sw/mbn_sw.txt
     fi
 else
     if [ ! -f /vendor/firmware_mnt/verinfo/ver_info.txt -o "$prev_version_info" != "$cur_version_info" ]; then
@@ -560,8 +593,7 @@ else
 fi
 chmod g-w -R /data/vendor/modem_config/*
 chmod g-w /data/vendor/modem_config
-#setprop ro.vendor.ril.mbn_copy_completed 1
-echo 1 > /data/vendor/radio/copy_complete
+setprop ro.vendor.ril.mbn_copy_completed 1
 
 #check build variant for printk logging
 #current default minimum boot-time-default

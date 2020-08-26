@@ -68,8 +68,6 @@ on post-fs
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
-    start vendor.qseecomd
-    exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
 service sec_nvm /vendor/bin/sec_nvm
@@ -84,7 +82,6 @@ on post-fs-data
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
     mkdir /data/vendor/hbtp 0750 system system
-    mkdir /data/vendor/tloc 0700 system drmrpc
     mkdir /data/vendor/nnhal 0700 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
@@ -110,6 +107,7 @@ on boot
     setprop vendor.usb.rmnet.func.name "gsi"
     setprop vendor.usb.rmnet.inst.name "rmnet"
     setprop vendor.usb.dpl.inst.name "dpl"
+    setprop vendor.usb.qdss.inst.name "qdss"
     setprop vendor.usb.controller a600000.dwc3
     setprop sys.usb.configfs 1
 
@@ -153,9 +151,7 @@ on property:sys.shutdown.requested=*
     stop vendor.per_proxy
 
 on charger
-    start vendor.hvdcp_opti
-    start power_off_alarm
-    setprop vendor.usb.controller a600000.dwc3
+    start vendor.power_off_alarm
     setprop sys.usb.configfs 1
 
 ## import cne init file
@@ -169,25 +165,16 @@ on charger
 #on property:persist.usb.chgdisabled=0
 #    write /sys/class/power_supply/battery/charging_enabled 1
 
-service vendor.qseecomd /vendor/bin/qseecomd
+service spdaemon /vendor/bin/spdaemon
     class core
-    user root
-    group root
-
-#service spdaemon /vendor/bin/spdaemon
-#    class core
-#    user system
-#    group system
+    user system
+    group system
 
 service hdcp_srm /vendor/bin/hdcp_srm
     class core
     user system
     group system
 
-#service mpdecision /system/vendor/bin/mpdecision --avg_comp
-#   user root
-#   disabled
-#
 #service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
 #   user system
 #   group system
@@ -202,7 +189,6 @@ service thermal-engine /system/vendor/bin/thermal-engine
    socket thermal-send-rule stream 0660 system system
    group root
 
-#TODO: This MUST be disabled not use 'security-check1' in LGE platform.
 #service security-check1 /sbin/security_boot_check system
 #    class core
 #    oneshot
@@ -215,16 +201,6 @@ service thermal-engine /system/vendor/bin/thermal-engine
 #   class late_start
 #   user root
 #   group root
-
-service adsprpcd /vendor/bin/adsprpcd
-   class main
-   user media
-   group media
-
-service cdsprpcd /vendor/bin/cdsprpcd
-   class main
-   user system
-   group system
 
 #service audiod /vendor/bin/audiod
 #   class late_start
@@ -291,20 +267,8 @@ service cdsprpcd /vendor/bin/cdsprpcd
 #    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch_enable
 #    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch
 #
-#service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
-#    class main
-#    user system
-#    socket ims_qmid stream 0660 system radio
-#    group radio log diag
 #
-# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
-#service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
-#    class main
-#    user system
-#    socket ims_datad stream 0660 system radio
-#    group system wifi radio inet log diag
-#    disabled
-
+#
 #service mdm_helper /system/bin/mdm_helper
 #    class core
 #    onrestart setprop ro.service.mdm_helper_restarted "true"
@@ -358,31 +322,15 @@ service cdsprpcd /vendor/bin/cdsprpcd
 #   group gps system qcom_diag diag log inet net_raw
 #   disabled
 
-service vendor.imsrcsservice /system/vendor/bin/imsrcsd
-    class main
-    user system
-    group radio diag inet log wakelock
-
-# TODO: This MUST be disabled not use 'qcom ims daemon' in LGE platform.
-#on property:vendor.ims.QMI_DAEMON_STATUS=1
-#    start vendor.imsdatadaemon
-
+# LGE_WIFI, Block qcom cnss_diag service start
 #on property:vold.decrypt=trigger_restart_framework
 #   start cnss_diag
-
+#
 #service cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
 #   class main
 #   user system
 #   group system wifi inet sdcard_rw media_rw diag
 #   oneshot
-
-#service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
-#   class main
-#   user system
-#   group radio diag inet log
-
-#on property:vendor.ims.DATA_DAEMON_STATUS=1
-#    restart vendor.ims_rtp_daemon
 
 service ppd /vendor/bin/mm-pp-dpps
     class late_start
@@ -430,18 +378,3 @@ service energy-awareness /system/vendor/bin/energy-awareness
     user system
     group system
     oneshot
-
-service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
-    class main
-    user root
-    group system wakelock
-
-service smcinvoked /system/bin/smcinvoked
-    class main
-    user system
-    group system
-
-#service vendor.tlocd /vendor/bin/tloc_daemon
-#    class late_start
-#    user system
-#    group drmrpc gps net_raw

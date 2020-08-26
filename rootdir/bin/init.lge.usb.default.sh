@@ -7,13 +7,11 @@ case "$target_operator" in
         default="charge_only"
         ;;
     "VZW")
+        default="charge_only"
         if [ -f "/vendor/etc/usbautorun.iso" ]; then
             if [ -f "/sys/class/android_usb/android0/f_cdrom_storage/lun/cdrom_usbmode" ]; then
                 echo 0 > /sys/class/android_usb/android0/f_cdrom_storage/lun/cdrom_usbmode
             fi
-            default="charge_only"
-        else
-            default="mtp"
         fi
         ;;
     *)

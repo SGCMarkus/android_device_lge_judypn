@@ -1,5 +1,5 @@
 on post-fs-data
-    #LGP_DATA_APN_BACKUP
+    #2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP
     mkdir /mnt/vendor/persist-lg/lgdata 0771 radio radio
 
     #Widevine
@@ -12,7 +12,7 @@ on post-fs-data
     mkdir /mnt/vendor/persist-lg/chargerlogo 0771 system system
 
     #Thermal Encryption
-    mkdir /mnt/vendor/persist-lg/thermal 0771 root shell
+    mkdir /mnt/vendor/persist-lg/thermal 0770 root system
 
     #RCT
     rm /mnt/vendor/persist-lg/rct
@@ -89,17 +89,16 @@ on post-fs-data
     restorecon_recursive /mnt/vendor/qni
     restorecon /mnt/vendor/power
     restorecon_recursive /mnt/vendor/power
-    restorecon /oem
-    restorecon_recursive /oem
-    restorecon /oem/OP
-    restorecon_recursive /oem/OP
+    restorecon /sys/kernel/debug/tzdbg
+    restorecon_recursive /sys/kernel/debug/tzdbg
 
     #Widevine firmware copy
-    exec - system system -- /vendor/bin/cpfirmware widevine /mnt/vendor/persist-lg/firmware
+    # reducing booting time. changing to background start
+    exec_background - system system -- /vendor/bin/cpfirmware widevine /mnt/vendor/persist-lg/firmware
 
     #Create callduration file
     mkdir /mnt/vendor/persist-lg/callduration 0770 system radio
-    chown system radio /mnt/vendor/persist-lg/callduration
+    chown system /mnt/vendor/persist-lg/callduration
     chmod 0770 /mnt/vendor/persist-lg/callduration
 
     #Create rtnlastdate file

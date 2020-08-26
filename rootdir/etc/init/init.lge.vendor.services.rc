@@ -1,3 +1,14 @@
+##############################################
+# LINUXIGD  requirement for Korean KT operator
+##############################################
+#Interfaces should be on only in case of IGD on & reboot
+on property:persist.vendor.lge.service.igd.start=1
+    mkdir /data/vendor/igd 0700 root system
+    start vendor.linuxigd
+on property:persist.vendor.lge.service.igd.start=0
+    stop vendor.linuxigd
+service vendor.linuxigd /vendor/bin/linuxigd2 -f ${persist.vendor.lge.service.igd.extnet} ${persist.vendor.lge.service.igd.intnet}
+       disabled
 ########################################
 # Application Manager ENABLE_UNINSTALL
 ########################################
