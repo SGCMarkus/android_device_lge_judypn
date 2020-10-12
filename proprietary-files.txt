@@ -373,16 +373,10 @@ vendor/lib64/libsymphonypower-1.1.4.so
 vendor/lib64/libsymphonypower.so
 
 # Fingerprint
-vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
-vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
--vendor/etc/vintf/manifest/vendor.lge.hardware.biometrics.fingerprint@2.1.xml
 vendor/lib64/hw/fingerprint.sdm845.so
-vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so
-vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/libgf_hal.so
 vendor/lib64/libgf_algo.so
 vendor/lib/hw/fingerprint.sdm845.so
-vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib/libgf_hal.so
 vendor/lib/libgf_algo.so
 vendor/usr/idc/goodix_fp_key.idc
