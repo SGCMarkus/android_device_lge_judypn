@@ -7,6 +7,8 @@ vendor/etc/acdbdata/Handset_cal.acdb
 vendor/etc/acdbdata/Hdmi_cal.acdb
 vendor/etc/acdbdata/Headset_cal.acdb
 vendor/etc/acdbdata/Speaker_cal.acdb
+vendor/lib/hw/audio.primary.sdm845.so
+vendor/lib64/hw/audio.primary.sdm845.so
 
 # Camera
 vendor/lib/hw/camera.sdm845.so
@@ -218,15 +220,6 @@ vendor/lib/camera/com.qti.tuned.sl556_tmus.bin
 vendor/lib/camera/com.qti.tuned.sl846.bin
 vendor/lib/camera/com.qti.tuned.sl846_tmus.bin
 
-# Configstore
-vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
-vendor/etc/configstore/vpp.configstore.xml
-vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
-vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.capabilityconfigstore@1.0.so
-vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
-vendor/lib/vendor.qti.hardware.capabilityconfigstore@1.0.so
-
 # Crypto
 vendor/lib64/libcpion.so
 vendor/lib64/libfpfactory-impl.so
@@ -243,8 +236,6 @@ vendor/lib64/libpvr.so
 vendor/lib64/librmp.so
 vendor/lib64/libsi.so
 vendor/lib64/libunified_sysfs_vendor.so
-vendor/lib/libatd_common.so
-vendor/lib/libatd_corelib.so
 vendor/lib/libatd_modeminterface.so
 vendor/lib/libbluedroid_bdt.so
 vendor/lib/libcpion.so
@@ -405,33 +396,6 @@ vendor/lib/camera/fw/bu24235_dl_program_Judy_LGITAct_ICG1020S_rev0_S_data2.bin
 vendor/ffu/FFUSAMSUNG_KLUDG4U1EA-B0C1_0500.bin
 vendor/ffu/FFUTOSHIBA_THGAF8G9T43BAIRB_0300.bin
 
-# Firmware (Graphics)
-vendor/firmware/a225p5_pm4.fw
-vendor/firmware/a225_pfp.fw
-vendor/firmware/a225_pm4.fw
-vendor/firmware/a300_pfp.fw
-vendor/firmware/a300_pm4.fw
-vendor/firmware/a330_pfp.fw
-vendor/firmware/a330_pm4.fw
-vendor/firmware/a420_pfp.fw
-vendor/firmware/a420_pm4.fw
-vendor/firmware/a530_gpmu.fw2
-vendor/firmware/a530_pfp.fw
-vendor/firmware/a530_pm4.fw
-vendor/firmware/a530v1_pfp.fw
-vendor/firmware/a530v1_pm4.fw
-vendor/firmware/a530v2_seq.fw2
-vendor/firmware/a530v3_gpmu.fw2
-vendor/firmware/a530v3_seq.fw2
-vendor/firmware/a540_gpmu.fw2
-vendor/firmware/a630_gmu.bin
-vendor/firmware/a630_sqe.fw
-vendor/firmware/a630_zap.b00
-vendor/firmware/a630_zap.b01
-vendor/firmware/a630_zap.b02
-vendor/firmware/a630_zap.elf
-vendor/firmware/a630_zap.mdt
-
 # Firmware (Leia)
 vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
@@ -462,11 +426,7 @@ vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 
-# HotwordEnrollment
--product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
--product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
-
-# Keystore
+# Keymaster
 vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
 vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
 vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc

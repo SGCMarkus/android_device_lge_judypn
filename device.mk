@@ -20,6 +20,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product-if-exists, vendor/lge/judypn/judypn-vendor.mk)
 
 DEVICE_PATH := device/lge/judypn
+DEVICE_NAME := judypn
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -41,17 +42,6 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/audio/mixer_paths_tavil.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tavil.xml \
     $(DEVICE_PATH)/audio/sound_trigger_mixer_paths_wcd9340.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9340.xml \
     $(DEVICE_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
-
-# Init
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/fstab.judypn:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.judypn
-
-$(foreach f,$(wildcard $(DEVICE_PATH)/rootdir/etc/init/hw/*.rc),\
-        $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $f)))
-
-# IRSC
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 # NFC
 PRODUCT_COPY_FILES += \

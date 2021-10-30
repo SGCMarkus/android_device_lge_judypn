@@ -36,7 +36,6 @@ BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 
 # Recovery
 TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery/recovery.wipe
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.judypn
 
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2020-07-01
