@@ -7,8 +7,6 @@ vendor/etc/acdbdata/Handset_cal.acdb
 vendor/etc/acdbdata/Hdmi_cal.acdb
 vendor/etc/acdbdata/Headset_cal.acdb
 vendor/etc/acdbdata/Speaker_cal.acdb
-vendor/lib/hw/audio.primary.sdm845.so
-vendor/lib64/hw/audio.primary.sdm845.so
 
 # Camera
 vendor/lib/hw/camera.sdm845.so
